@@ -1,0 +1,30 @@
+{
+  "name": "eltex",
+  "version": "1.0.0",
+  "description": "eltexSchoolAngular",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TanyaAl/Eltex.git"
+  },
+  "author": "Tanya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TanyaAl/Eltex/issues"
+  },
+  "homepage": "https://github.com/TanyaAl/Eltex#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.32.0",
+    "htmlhint": "^1.9.2",
+    "stylelint": "^17.4.0",
+    "stylelint-config-standard": "^40.0.0",
+    "typescript": "^5.9.3"
+  }
+}
