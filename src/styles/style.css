@@ -1,0 +1,161 @@
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets//fonts/Inter-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets//fonts/Inter-Bold.woff2") format("woff2");
+}
+
+root {
+    --dark-grey: #323747;
+    --middle-grey: #68686A;
+    --light-grey: #BDC1CA;
+    --orange: #DB5E31;
+    --light-beige: #FEF3EF;
+    --green: #61C15C;
+    --light-green: #61C15C;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+main, header, footer {
+    margin-left: 135px;
+    margin-right: 135px;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.btn {
+    height: 50px;
+    border-radius: 5px;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-page-info {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.list-menu {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 20px;
+}
+
+.about-me {
+    gap: 190px;
+}
+
+.head-img {
+    height: 650px;
+    width: 480px;
+    overflow: hidden;
+    border-bottom-left-radius: 273px;
+    border-bottom-right-radius: 273px;
+}
+
+.head-text {
+    flex: 1;
+}
+
+.last-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: center;
+    margin-top: 100px;
+}
+
+/* .main-page-article {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+} */
+
+.btn-all-posts {
+    width: 200px;
+    margin-top: -30px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 36px;
+    padding: 0;
+}
+
+.skill {
+    list-style: none;
+    padding-bottom: 24px;
+    border-bottom: solid 1px;
+}
+
+.experience {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.experience-title {
+    flex: 1;
+}
+
+.experience-list {
+    flex: 1;
+}
+
+.hobby-grid {
+    display: grid;
+    grid-template-columns: 264px 264px 568px;
+    grid-template-rows: auto 264px 264px;
+    gap: 20px 36px;
+}
+
+.hobby-title {
+    grid-column: 1/span 2;
+    grid-row: 1/2;
+}
+
+.hobby-vert {
+    height: 568px;
+    width: 264px;
+}
+
+.hobby-goriz {
+    height: 264px;
+    width: 568px;
+    grid-column: 3/-1;
+}
+
+
