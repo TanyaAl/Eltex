@@ -1,0 +1,94 @@
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/Inter-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/Inter-Bold.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: Sarabun;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/assets/fonts/sarabun.woff2");
+}
+
+* {
+  font-family: Inter, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    background-color: pink;
+
+}
+
+main, header {
+    max-width: 1175px;
+    margin: 0 auto;
+}
+
+p, h1, h2, h3 {
+    color: var(--dark-grey);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.btn {
+    height: 50px;
+    border-radius: 5px;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+}
+
+.main-page-info {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.p15 {
+    font-size: 15px;
+    line-height: 26px;
+}
+
+.p16 {
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.p20 {
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.p21 {
+    font-size: 21px;
+    line-height: 25px;
+}
+

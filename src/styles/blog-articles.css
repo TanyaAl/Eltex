@@ -1,0 +1,21 @@
+@import url("variables.css");
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 62px 34px;
+    margin-top: var(--space77);
+}
+
+.main-card {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
+}
+
+.main-card-img {
+    grid-column: 1/ span 2;
+}
+

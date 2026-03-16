@@ -1,0 +1,14 @@
+@import url("variables.css");
+
+.blog-logo-circle {
+    height: 215px;
+    width: 215px;
+}
+
+.blog-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space57);
+}

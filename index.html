@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/src/styles/style.css">
     <link rel="preload" href="/assets/fonts/Inter-Bold.woff2" as="font" crossorigin="anonymous">
     <link rel="preload" href="/assets/fonts/Inter-Regular.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="/assets/fonts/sarabun.woff2" as="font" crossorigin="anonymous">
     <title>Главная</title>
 </head>
 <body>
@@ -25,29 +26,49 @@
         <section class="about-me card">
             <div class="head-text">
                 <h1>Обо мне</h1>
-                <p>Добро пожаловать! Я веб-разработчик с 5-летним опытом в создании интерактивных интерфейсов. На этом блоге я делюсь своими знаниями, проектами и идеями о том, как технология меняет способ общения людей. Здесь вы найдёте туториалы, кейсы из реальной практики и вдохновляющие истории.</p>
+                <p class="p15">Добро пожаловать! Я веб-разработчик с 5-летним опытом в создании интерактивных интерфейсов. На этом блоге я делюсь своими знаниями, проектами и идеями о том, как технология меняет способ общения людей. Здесь вы найдёте туториалы, кейсы из реальной практики и вдохновляющие истории.</p>
+                <a href="#skills" class="p15">Больше обо мне <img src="/assets/arrow.svg" alt="arrow"></a>
             </div>
-            <div class="head-img">
+            <div class="head-img"> 
                 <img src="./assets/head-img.webp" alt="nature">
+                <div class="my-blog-circle"><img src="/assets/my-blog.svg" alt="my-blog"></div>
             </div>
         </section>
         <div class="main-page-info">
             <section class="experience">
                 <div class="experience-title">
-                    <h1>Моя карьера</h1>
-                    <p>Duis nisi do exercitation in irure aliqua commodo nisi eu id reprehenderit dolore fugiat consectetur irure</p>
+                    <h2>Моя карьера</h2>
+                    <p class="p21">Duis nisi do exercitation in irure aliqua commodo nisi eu id reprehenderit dolore fugiat consectetur irure</p>
                 </div>
                 <div class="experience-list">
-                    <h2>Текущая должность</h2>
+                    <!-- <h2>Текущая должность</h2>
                     <p>Старший веб-разработчик, ООО "DigitalStudio" (2022 — по настоящее время)
-        Руководство командой из 4 разработчиков, разработка архитектуры фронтенда, менторство младших специалистов, внедрение новых технологий в рабочий процесс.</p>
-                    <h2>Опыт работы:</h2>
-                    <h3>Веб-разработчик, ООО "CreativeAgency" (2019 — 2022)</h3>
-                    <p>Создание корпоративных сайтов и веб-приложений на React и Vue.js, оптимизация производительности, работа с клиентами и сбор требований.</p>
-                    <h3>Фронтенд-разработчик, Стартап "TechVenture" (2018 — 2019)</h3>
-                    <p>Разработка пользовательского интерфейса для платформы e-learning, работа с REST API и веб-стандартами.</p>
-                    <h3>Интернет-стажёр, Веб-студия "WebMasters" (2017 — 2018)</h3>
-                    <p>Первый опыт в профессиональной разработке, участие в создании и поддержке различных проектов.</p>
+        Руководство командой из 4 разработчиков, разработка архитектуры фронтенда, менторство младших специалистов, внедрение новых технологий в рабочий процесс.</p> -->
+                    <!-- <h2>Опыт работы:</h2> -->
+                     <div class="work-place">
+                         <div class="firm-logo"><img src="/assets/Consectutur.svg" alt="firm-logo"></div>
+                         <div class="exp-description">
+                             <h3 class="p16">ООО "CreativeAgency" (2019 — 2022)</h3>
+                             <p class="p20">Веб-разработчик</p>
+                             <p class="p16">Создание корпоративных сайтов и веб-приложений на React и Vue.js, оптимизация производительности, работа с клиентами и сбор требований.</p>
+                         </div>
+                     </div>
+                    <div class="work-place">
+                        <div class="firm-logo"><img src="/assets/Bibendum.svg" alt="firm-logo"></div>
+                        <div class="exp-description">
+                            <h3 class="p16">Стартап "TechVenture" (2018 — 2019)</h3>
+                            <p class="p20">Фронтенд-разработчик</p>
+                            <p class="p16">Разработка пользовательского интерфейса для платформы e-learning, работа с REST API и веб-стандартами.</p>
+                        </div>
+                    </div>
+                    <div class="work-place">
+                        <div class="firm-logo"><img src="/assets/Adipiscing.svg" alt="firm-logo"></div>
+                        <div class="exp-description">
+                            <h3 class="p16">Веб-студия "WebMasters" (2017 — 2018)</h3>
+                            <p class="p20">Интернет-стажёр</p>
+                            <p class="p16">Первый опыт в профессиональной разработке, участие в создании и поддержке различных проектов.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
             <!-- <section>            
@@ -64,13 +85,15 @@
                     <li>Google Analytics Certification (2020)</li>
                 </ul>
             </section> -->
-            <section class="skills">
+            <section id="skills" class="skills">
                 <h2>Навыки:</h2>
                 <ul class="skills-grid">
                     <li class="skill">JS/TS/Node.js</li>
                     <li class="skill">HTML5/CSS3</li>
-                    <li class="skill">React/Vue.js,</li>
-                    <li class="skill">Webpack/Docker,</li>
+                    <li class="skill">React/Vue.js</li>
+                    <li class="skill">Figma</li>
+                    <li class="skill">VSCode</li>
+                    <li class="skill">Webpack/Docker</li>
                     <li class="skill">Agile/Scrum</li>
                     <li class="skill">Test-Driven Development</li>
                 </ul>
@@ -88,9 +111,10 @@
                 <!-- <h2>Последние статьи</h2> -->
                 <article class="main-page-article card">
                     <div>
+                        <p class="p16 red-text">Рубрика</p>
                         <h3>Как создать адаптивный дизайн за 30 минут</h3>
-                        <p>Опубликовано: <time datetime="2024-12-15">15 декабря 2024</time></p>
-                        <p>В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
+                        <!-- <p>Опубликовано: <time datetime="2024-12-15">15 декабря 2024</time></p> -->
+                        <p class="p16">В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
                     </div>
                     <div>
                         <img src="/assets/template.webp" alt="article-img">
@@ -98,9 +122,10 @@
                 </article>
                 <article class="main-page-article card">
                     <div>
+                        <p class="p16 green-text">Рубрика</p>
                         <h3>Как создать адаптивный дизайн за 30 минут</h3>
-                        <p>Опубликовано: <time datetime="2024-12-15">15 декабря 2024</time></p>
-                        <p>В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
+                        <!-- <p>Опубликовано: <time datetime="2024-12-15">15 декабря 2024</time></p> -->
+                        <p class="p16">В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
                     </div>
                     <div>
                         <img src="/assets/template.webp" alt="article-img">
@@ -125,7 +150,7 @@
             <div class="hobby-grid">
                 <!-- <div > -->
                     <h2 class="hobby-title">Hobby projects</h2>
-                    <p class="hobby-subtitle">Duis nisi do exercitation in irure aliqua commodo nisi eu id reprehenderit dolore fugiat consectetur irure labore est ea.</p>
+                    <p class="hobby-subtitle p21">Duis nisi do exercitation in irure aliqua commodo nisi eu id reprehenderit dolore fugiat consectetur irure labore est ea.</p>
                 <!-- </div> -->
                 <div class="hobby-vert hobby-img-1"><img src="/assets/hobby-vert.webp" alt="painting"></div>
                 <div class="hobby-vert hobby-img-2"><img src="/assets/hobby-vert.webp" alt="painting"></div>
@@ -134,13 +159,40 @@
             </div>
         </section>
     </main>
-    <footer id="footer">
-        <address>
-            <h2>Контакты</h2>
-            <p><a href="mailto:alex@creativeblog.ru?subject=Новая%20статья">Email: alex@creativeblog.ru</a><br><a href="tel:+79991234567">Телефон: +7 (999) 123-45-67</a></p>
-            <h2>Социальные сети</h2>
-            <p>Instagram | Twitter | LinkedIn | GitHub</p>
-        </address>
+    <footer id="footer" class="footer-main">
+        <div class="footer-container">
+            <address class="contacts">
+                <h2>Say hello and let's work together !</h2>
+                <p><a href="mailto:alex@creativeblog.ru?subject=Новая%20статья">Email: alex@creativeblog.ru</a><br><a href="tel:+79991234567">Телефон: +7 (999) 123-45-67</a></p>
+                <h2>Социальные сети</h2>
+                <p>Instagram | Twitter | LinkedIn | GitHub</p>
+            </address>
+            <form action="add-text" method="post" class="footer-form">
+                <h2>Создать статью</h2>
+                <div>
+                    <label for="title"></label>
+                    <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    required
+                    placeholder="Заголовок"
+                    >
+                </div>
+                <div>
+                    <label for="content"></label>
+                    <textarea
+                    type="text"
+                    id="content"
+                    name="content"
+                    required
+                    placeholder="Текст статьи"
+                    ></textarea>
+                </div>
+                <button type="submit">Добавить</button>
+            </form>
+            <p class="footer-tm">© 2026 Brand, Inc</p>
+        </div>
     </footer>   
 </body>
 </html>

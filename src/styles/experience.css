@@ -1,0 +1,43 @@
+@import url("variables.css");
+
+.experience {
+    display: flex;
+    flex-direction: row;
+    gap: 42px;
+    margin-top: var(--space107);
+}
+
+.experience-title {
+    flex: 1;
+}
+
+.experience-title h2 {
+    font-size: 52px;
+    margin-bottom: 13px;
+}
+
+.experience-list {
+    flex: 1;
+}
+
+.firm-logo {
+    height: 69px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.firm-logo img {
+    object-fit: contain;
+}
+
+.work-place {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    padding-top: 38px;
+    padding-bottom: 38px;
+    border-bottom: solid 2px var(--light-grey);
+}

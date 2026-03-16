@@ -1,0 +1,36 @@
+@import url("variables.css");
+
+#footer {
+    background-color: var(--dark-dark-grey);
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 36px;
+    padding-top: 53px;
+    padding-bottom: 50px;
+    max-width: 1175px;
+    margin: 0 auto;
+}
+
+.footer-container h2, p {
+    color: var(--footer-white); 
+}
+
+.contacts {
+    grid-column: 1/span 2;
+}
+
+.footer-form {
+    grid-column: 3/span 1;
+}
+
+.footer-main {
+    margin-top: var(--space77);
+}
+
+.footer-blog {
+    margin-top: var(--space67);
+}

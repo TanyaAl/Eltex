@@ -1,0 +1,29 @@
+@import url("variables.css");
+
+.hobby {
+    margin-top: var(--space112);
+}
+
+.hobby-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-rows: auto 264px 264px;
+    gap: 25px 36px;
+}
+
+.hobby-title {
+    grid-column: 1/span 2;
+    grid-row: 1/2;
+    font-size: 52px;
+}
+
+.hobby-vert {
+    height: 553px;
+    width: 264px;
+}
+
+.hobby-goriz {
+    height: 264px;
+    width: 553px;
+    grid-column: 3/-1;
+}

@@ -1,0 +1,37 @@
+@import url("variables.css");
+
+.last-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: center;
+    margin-top: var(--space107);
+}
+
+.btn-all-posts {
+    width: 200px;
+    margin-top: -25px;
+    background-color: transparent;
+    border: solid 1px var(--green);
+    color: var(--green);
+    transition: transform 0.3s ease;
+}
+
+.btn-all-posts:hover {
+    transform: scale(1.1);
+}
+
+.red-text {
+    color: var(--orange);
+    margin-bottom: 8px;
+}
+
+.green-text {
+    color: var(--green);
+    margin-bottom: 8px;
+}
+
+.main-page-article h3 {
+    font-size: 32px;
+    margin-bottom: 16px;
+}
