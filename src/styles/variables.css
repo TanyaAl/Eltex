@@ -2,13 +2,16 @@
     --logo-color: #1A1B20;
     --dark-dark-grey: #1E2128;
     --dark-grey: #323747;
+    --dark-opacity-grey: #323743BF;
     --middle-grey: #68686A;
     --light-grey: #BDC1CA;
     --orange: #DB5E31;
     --light-beige: #FEF3EF;
     --footer-white: #FDFEFF;
+    --form-border-white: #DDE0E7;
+    --white: #fff;
     --green: #61C15C;
-    --light-green: #61C15C;
+    --light-green: #F4FBF4;
     --space112: 112px;
     --space107: 107px;
     --space91: 91px;

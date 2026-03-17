@@ -17,8 +17,8 @@
 }
 
 .head-img {
-    height: 650px;
-    width: 480px;
+    max-height: 650px;
+    max-width: 480px;
     overflow: hidden;
     border-bottom-left-radius: 273px;
     border-bottom-right-radius: 273px;
