@@ -80,3 +80,27 @@
     flex: 1.5;
     overflow: hidden;
 }
+
+@media (width <= 480px) {
+    .last-articles {
+        gap: 30px;
+    }
+
+    .main-page-article {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
+
+    .main-page-article h3 {
+        font-size: 22px;
+    }
+
+    .main-page-article-text {
+        padding: 20px;
+    }
+
+    .btn-all-posts {
+        margin-top: 20px;
+    }
+}

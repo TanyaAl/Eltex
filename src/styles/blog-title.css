@@ -23,3 +23,20 @@
     font-size: 52px;
     margin-bottom: 25px;
 }
+
+@media (width <= 480px) {
+    .blog-title h1 {
+        font-size: 32px;
+    }
+
+    .blog-title {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding-top: 16px;
+    }
+
+    .blog-logo-circle {
+       display: none; 
+    }
+}

@@ -9,6 +9,7 @@
     grid-template-columns: 1fr 1fr 2fr;
     grid-template-rows: auto 1fr 1fr;
     gap: 25px 36px;
+    align-items: center;
 }
 
 .hobby-title {
@@ -17,10 +18,14 @@
     font-size: 52px;
 }
 
-.hobby-vert,
+.hobby-vert {
+    aspect-ratio: 268 / 552;
+    max-width: 268px;
+}
+
 .hobby-goriz {
-    height: 100%;
-    width: 100%;
+    aspect-ratio: 552 / 268;
+    max-width: 552px;
 }
 
 .hobby-img-1 {
@@ -32,12 +37,6 @@
     grid-area: 2 / span 1;
     grid-row: span 2;
 }
-
-/* .hobby-goriz {
-    height: 264px;
-    width: 553px;
-    grid-column: 3/-1;
-} */
 
 .hide-info {
     position: relative;
@@ -75,5 +74,33 @@
 .hide-info:hover::after,
 .hide-info:hover .hide-info-text {
     opacity: 1;
+}
+
+@media (width <= 480px) {
+    .hobby-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .hobby-grid h2 {
+        font-size: 32px;
+        grid-column: span 2;
+    }
+
+    .hobby-grid > p {
+        font-size: 20px;
+    }
+
+    .hobby-subtitle {
+        grid-column: span 2;
+    }
+
+    .hobby-img-3 {
+        grid-column: span 2;
+    }
+
+     .hobby-img-4 {
+        grid-column: span 2;
+    }
 }
 

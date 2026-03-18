@@ -34,3 +34,14 @@
     height: 2px;
     background-color: var(--light-grey);
 }
+
+@media (width <= 480px) {
+    .skills h2 {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    .skill {
+        font-size: 22px;
+    }
+}

@@ -53,4 +53,33 @@
     font-weight: 400;
 }
 
+@media screen and (width <= 800px) {
+    .experience {
+        flex-direction: column;
+    }
+}
+
+@media (width <= 480px) {
+    .experience {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .work-place {
+        flex-direction: column;
+    }
+
+    .experience-title h2 {
+        font-size: 32px;
+    }
+
+    .experience-title p{
+        font-size: 20px;
+    }
+
+    .firm-logo {
+        display: none;
+    }
+}
+
 

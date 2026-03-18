@@ -51,6 +51,10 @@ img {
     object-position: center;
 }
 
+ul {
+    list-style: none;
+}
+
 .btn {
     height: 50px;
     border-radius: 5px;
@@ -124,4 +128,12 @@ img {
 .logo {
     object-fit: contain;
 }
+
+@media screen and (width <= 800px) {
+    main {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
 

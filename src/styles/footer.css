@@ -51,7 +51,7 @@
 }
 
 .footer-form input {
-    width: 589px;
+    width: 100%;
     height: 60px;
     border: solid 1px var(--form-border-white);
     border-radius: 5px;
@@ -62,7 +62,7 @@
 }
 
 .footer-form textarea {
-    width: 589px;
+    width: 100%;
     min-height: 123px;
     height: fit-content;
     border: solid 1px var(--form-border-white);
@@ -79,4 +79,28 @@
     border: none;
 }
 
-/* @media screen and () */
+@media screen and (width <= 800px) {
+    footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contacts {
+        grid-column: 1/span 2;
+        margin-bottom: 50px;
+    }
+
+    .contacts h2 {
+        font-size: 32px;
+        line-height: normal;
+    }
+
+    .footer-form {
+        grid-column: 1/span 2;
+        margin-bottom: 50px;
+    }
+}

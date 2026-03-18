@@ -18,4 +18,13 @@
     --space77: 77px;
     --space67: 67px;
     --space57: 57px;
+
+    @media (width <= 480px) {
+        --space112: 56px;
+        --space107: 53px;
+        --space91: 45px;
+        --space77: 38px;
+        --space67: 33px;
+        --space57: 28px;
+    }
 }
