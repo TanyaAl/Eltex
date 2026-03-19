@@ -81,6 +81,12 @@
     overflow: hidden;
 }
 
+@media screen and (width <= 800px) {
+    .main-page-article {
+        padding-bottom: 30px;
+    }
+}
+
 @media (width <= 480px) {
     .last-articles {
         gap: 30px;
