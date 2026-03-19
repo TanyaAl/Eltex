@@ -1,0 +1,42 @@
+@import url("variables.css");
+
+.blog-logo-circle {
+    height: 215px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.blog-logo-circle:hover {
+    transform: rotate(30deg)
+}
+
+.blog-title {
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space57);
+}
+
+.blog-title h1 {
+    font-size: 52px;
+    margin-bottom: 25px;
+}
+
+@media (width <= 480px) {
+    .blog-title h1 {
+        font-size: 32px;
+    }
+
+    .blog-title {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding-top: 16px;
+    }
+
+    .blog-logo-circle {
+       display: none; 
+    }
+}

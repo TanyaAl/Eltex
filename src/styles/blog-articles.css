@@ -1,0 +1,93 @@
+@import url("variables.css");
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 62px 34px;
+    margin-top: var(--space77);
+}
+
+.main-card {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
+}
+
+.main-card h3 {
+    font-size: 40px;
+    line-height: 55px;
+    margin-bottom: 16px;
+}
+
+.main-card-img {
+    height: 453px;
+    grid-column: span 2;
+}
+
+.main-card-text {
+    grid-column: auto;
+}
+
+.regular-card {
+    height: 217px;
+    margin-bottom: 8px;
+}
+
+.regular-card-text h3 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.btn-more {
+    grid-column: 2/span 1;
+    justify-self: center;
+}
+
+@media screen and (width <= 800px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .main-card {
+        grid-column: span 2;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card {
+        grid-column: span 2;
+    }
+
+    .regular-card {
+        height: auto;
+    }
+
+    .btn-more {
+        grid-column: span 2;
+    }
+}
+
+@media (width <= 480px) {
+    .articles-grid {
+        row-gap: 30px;
+    }
+
+    .main-card h3 {
+    font-size: 26px;
+    line-height: normal;
+    }
+
+    .main-card-text > p {
+        margin-bottom: 8px;
+    }
+
+    .regular-card-text > h3 {
+        margin-bottom: 8px;
+    }
+
+    .btn-more {
+        margin-top: 0;
+    }
+}

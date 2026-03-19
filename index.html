@@ -4,101 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal_Blog">
+    <link rel="icon" type="image/svg" href="assets/favicon.svg">
+    <link rel="stylesheet" href="src/styles/style.css">
+    <link rel="preload" href="assets/fonts/Inter-Bold.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="assets/fonts/Inter-Regular.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="assets/fonts/sarabun.woff2" as="font" crossorigin="anonymous">
     <title>Главная</title>
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
+        <nav class="nav-container">
+            <div class="logo-title">Портфолио</div>
+            <ul class="list-menu">
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="blog.html">Блог</a></li>
+                <li><a href="#footer">Контакты</a></li>
             </ul>
+            <div class="hamburger-menu">
+                <input id="menu-toggle" type="checkbox" />
+                <label class="menu-btn" for="menu-toggle">
+                <span></span>
+                </label>
+                <ul class="menu-box">
+                    <li class="p20"><a class="menu-item" href="index.html">Главная</a></li>
+                    <li class="p20"><a class="menu-item" href="blog.html">Блог</a></li>
+                    <li class="p20"><a class="menu-item" href="#footer">Контакты</a></li>
+                </ul>
+            </div>
         </nav>
     </header> 
     <main>
-        <section>
-            <h1>Обо мне</h1>
-            <p>Добро пожаловать! Я веб-разработчик с 5-летним опытом в создании интерактивных интерфейсов. На этом блоге я делюсь своими знаниями, проектами и идеями о том, как технология меняет способ общения людей. Здесь вы найдёте туториалы, кейсы из реальной практики и вдохновляющие истории.</p>
-            <div>
-                <img src="./assets/head_img.webp" alt="nature">
+        <section class="about-me main-page-item">
+            <div class="head-text">
+                <h1>Обо мне</h1>
+                <p class="p15">Добро пожаловать! Я веб-разработчик с 5-летним опытом в создании интерактивных интерфейсов. На этом блоге я делюсь своими знаниями, проектами и идеями о том, как технология меняет способ общения людей. Здесь вы найдёте туториалы, кейсы из реальной практики и вдохновляющие истории.</p>
+                <a href="#skills" class="p15">Больше обо мне <img src="assets/arrow.svg" alt="arrow"></a>
+            </div>
+            <div class="head-img"> 
+                <img src="./assets/head-img.webp" alt="nature">
+                <div class="my-blog-circle"><img src="assets/my-blog.svg" alt="my-blog"></div>
             </div>
         </section>
-        <section>
-            <h1>Моя карьера</h1>
-            <h2>Текущая должность</h2>
-            <p>Старший веб-разработчик, ООО "DigitalStudio" (2022 — по настоящее время)
-Руководство командой из 4 разработчиков, разработка архитектуры фронтенда, менторство младших специалистов, внедрение новых технологий в рабочий процесс.</p>
-            <h2>Опыт работы:</h2>
-            <h3>Веб-разработчик, ООО "CreativeAgency" (2019 — 2022)</h3>
-            <p>Создание корпоративных сайтов и веб-приложений на React и Vue.js, оптимизация производительности, работа с клиентами и сбор требований.</p>
-            <h3>Фронтенд-разработчик, Стартап "TechVenture" (2018 — 2019)</h3>
-            <p>Разработка пользовательского интерфейса для платформы e-learning, работа с REST API и веб-стандартами.</p>
-            <h3>Интернет-стажёр, Веб-студия "WebMasters" (2017 — 2018)</h3>
-            <p>Первый опыт в профессиональной разработке, участие в создании и поддержке различных проектов.</p>
-        </section>
-        <section>            
-            <h2>Образование:</h2>
-            <h3>Государственный Технический Университет, 2013 — 2017</h3>
-            <p>Бакалавриат по специальности "Информатика и вычислительная техника"<br>Выпускная работа: "Оптимизация загрузки веб-страниц на мобильных устройствах"</p>
-        </section>
-        <section>            
-            <h2>Курсы и сертификации:</h2>
-            <ul>
-                <li>Advanced React Development — Coursera (2023)</li>
-                <li>UX/UI Design Fundamentals — Skillbox (2021)</li>
-                <li>Web Performance Optimization — Frontend Masters (2022)</li>
-                <li>Google Analytics Certification (2020)</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Навыки:</h2>
-            <ul>
-                <li>Программирование: JavaScript, TypeScript, React, Vue.js, HTML5, CSS3, Node.js</li>
-                <li>Инструменты: Git, Webpack, Docker, Figma, VS Code</li>
-                <li>Методологии: Agile, Scrum, Test-Driven Development</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Достижения:</h2>
-            <ul>
-                <li>Разработал платформу для управления проектами, которой пользуются более 500 компаний</li>
-                <li>Снизил время загрузки сайта на 60% благодаря оптимизации и внедрению современных стандартов</li>
-                <li>Провёл более 20 воркшопов и мастер-классов для начинающих разработчиков</li>
-                <li>Организовал две конференции "Web Technologies Conference" в своем городе</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Последние статьи</h2>
-            <article>
-                <h3>Как создать адаптивный дизайн за 30 минут</h3>
-                <p>Опубликовано: <time datetime="2024-12-15">15 декабря 2024</time></p>
-                <p>В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
-            </article>
-            <article>
-                <h3>Как создать адаптивный дизайн за 30 минут</h3>
-                <p>Опубликовано: <time datetime="2024-12-15">15 декабря 2024</time></p>
-                <p>В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
-            </article>
-            <article>
-                <h3>Как создать адаптивный дизайн за 30 минут</h3>
-                <p>Опубликовано: <time datetime="2024-12-15">15 декабря 2024</time></p>
-                <p>В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
-            </article>
-            <article>
-                <h3>Как создать адаптивный дизайн за 30 минут</h3>
-                <p>Опубликовано: <time datetime="2024-12-15">15 декабря 2024</time></p>
-                <p>В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
-            </article>
-            <a href="blog.html">Посмотреть все статьи</a>
+        <div class="main-page-info">
+            <section class="experience">
+                <div class="experience-title">
+                    <h2>Моя карьера</h2>
+                    <p class="p21">Duis nisi do exercitation in irure aliqua commodo nisi eu id reprehenderit dolore fugiat consectetur irure</p>
+                </div>
+                <div class="experience-list">
+
+                     <div class="work-place">
+                         <div class="firm-logo"><img class="logo" src="assets/Consectutur.svg" alt="firm-logo"></div>
+                         <div class="exp-description">
+                             <h3 class="p16 mb-14">ООО "CreativeAgency" (2019 — 2022)</h3>
+                             <p class="p20 mb-14">Веб-разработчик</p>
+                             <p class="p16">Создание корпоративных сайтов и веб-приложений на React и Vue.js, оптимизация производительности, работа с клиентами и сбор требований.</p>
+                         </div>
+                     </div>
+                    <div class="work-place">
+                        <div class="firm-logo"><img class="logo" src="assets/Bibendum.svg" alt="firm-logo"></div>
+                        <div class="exp-description">
+                            <h3 class="p16 mb-14">Стартап "TechVenture" (2018 — 2019)</h3>
+                            <p class="p20 mb-14">Фронтенд-разработчик</p>
+                            <p class="p16">Разработка пользовательского интерфейса для платформы e-learning, работа с REST API и веб-стандартами.</p>
+                        </div>
+                    </div>
+                    <div class="work-place">
+                        <div class="firm-logo"><img class="logo" src="assets/Adipiscing.svg" alt="firm-logo"></div>
+                        <div class="exp-description">
+                            <h3 class="p16 mb-14">Веб-студия "WebMasters" (2017 — 2018)</h3>
+                            <p class="p20 mb-14">Интернет-стажёр</p>
+                            <p class="p16">Первый опыт в профессиональной разработке, участие в создании и поддержке различных проектов.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="skills" class="skills">
+                <h2>Навыки:</h2>
+                <ul class="skills-grid">
+                    <li class="skill">JS/TS/Node.js</li>
+                    <li class="skill">HTML5/CSS3</li>
+                    <li class="skill">React/Vue.js</li>
+                    <li class="skill">Figma</li>
+                    <li class="skill">VSCode</li>
+                    <li class="skill">Webpack/Docker</li>
+                    <li class="skill">Agile/Scrum</li>
+                    <li class="skill">Test-Driven Development</li>
+                </ul>
+            </section>
+            <section class="last-articles">
+                <article class="main-page-article main-page-item card red-back">
+                    <div class="main-page-article-text">
+                        <p class="p16 red-text">Рубрика</p>
+                        <h3>Как создать адаптивный дизайн за 30 минут</h3>
+                        <p class="p16">В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
+                    </div>
+                    <div class="main-page-article-img">
+                        <img src="assets/template.webp" alt="article-img">
+                    </div>
+                </article>
+                <article class="main-page-article main-page-item card green-back">
+                    <div class="main-page-article-text">
+                        <p class="p16 green-text">Рубрика</p>
+                        <h3>Как создать адаптивный дизайн за 30 минут</h3>
+                        <p class="p16">В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
+                    </div>
+                    <div class="main-page-article-img">
+                        <img src="assets/template.webp" alt="article-img">
+                    </div>
+                </article>
+                <button class="btn btn-all-posts" type="button">
+                    <a href="blog.html">Посмотреть все статьи</a>
+                </button>
+            </section>
+        </div>
+        <section class="hobby">
+            <div class="hobby-grid">
+                    <h2 class="hobby-title">Hobby projects</h2>
+                    <p class="hobby-subtitle p21">Duis nisi do exercitation in irure aliqua commodo nisi eu id reprehenderit dolore fugiat consectetur irure labore est ea.</p>
+                <div class="hobby-vert hide-info hobby-img-1">
+                    <div class="hide-info-text">
+                        <h3>Hobby project name</h3>
+                        <p class="p16">Duis nisi do exercitation in irure aliqua commodo nisi eu id reprehenderit dolore fugiat consectetur irure labore est ea.</p>
+                    </div>
+                    <img src="assets/hobby-vert.webp" alt="painting">
+                </div>
+                <div class="hobby-vert hobby-img-2"><img src="assets/hobby-vert.webp" alt="painting"></div>
+                <div class="hobby-goriz hobby-img-3"><img src="assets/hobby-goriz.webp" alt="painting"></div>
+                <div class="hobby-goriz hobby-img-4"><img src="assets/hobby-goriz.webp" alt="painting"></div>
+            </div>
         </section>
     </main>
-    <footer>
-        <address>
-            <h2>Контакты</h2>
-            <p><a href="mailto:alex@creativeblog.ru?subject=Новая%20статья">Email: alex@creativeblog.ru</a><br><a href="tel:+79991234567">Телефон: +7 (999) 123-45-67</a></p>
-            <h2>Социальные сети</h2>
-            <p>Instagram | Twitter | LinkedIn | GitHub</p>
-        </address>
+    <footer id="footer" class="footer-main">
+        <div class="footer-container">
+            <address class="contacts">
+                <h2>Say hello and let's work together !</h2>
+                <p><a href="mailto:alex@creativeblog.ru?subject=Новая%20статья">Email: alex@creativeblog.ru</a><br><a href="tel:+79991234567">Телефон: +7 (999) 123-45-67</a></p>
+                <div class="social-networks">
+                    <div class="footer-icon"><img src="assets/vk.svg" alt="logo-vk"></div>
+                    <div class="footer-icon"><img src="assets/tg.svg" alt="logo-vk"></div>
+                    <div class="footer-icon"><img src="assets/github.svg" alt="logo-vk"></div>
+                </div>
+            </address>
+            <form action="add-text" method="post" class="footer-form">
+                <div>
+                    <label for="title">Email</label>
+                    <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    required
+                    placeholder="Ваш email"
+                    >
+                </div>
+                <div>
+                    <label for="content">Введите сообщение</label>
+                    <textarea
+                    type="text"
+                    id="content"
+                    name="content"
+                    required
+                    placeholder="Опишите проект"
+                    ></textarea>
+                </div>
+                <button type="submit" class="btn btn-submit p18">Добавить</button>
+            </form>
+            <p class="footer-tm">© 2026 Brand, Inc</p>
+        </div>
     </footer>   
 </body>
 </html>

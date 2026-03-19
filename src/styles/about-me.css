@@ -1,0 +1,66 @@
+@import url("variables.css");
+
+.about-me {
+    position: relative;
+    gap: 190px;
+}
+
+.about-me h1 {
+    font-size: 52px;
+    color: var(--dark-grey);
+    margin-bottom: 35px;
+}
+
+.about-me p {
+    color: var(--middle-grey);
+    margin-bottom: 14px;
+}
+
+.head-img {
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 480 / 650;
+    overflow: hidden;
+    border-bottom-left-radius: 273px;
+    border-bottom-right-radius: 273px;
+}
+
+.my-blog-circle {
+    position: absolute;
+    top: 254px;
+    right: 385px;
+    transition: transform 0.3s ease;
+}
+
+.head-text {
+    flex: 1;
+}
+
+
+.head-text a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--green);
+    font-size: 15px;   
+}
+
+.head-text a img {
+    height: 1em;
+    width: auto;
+    transition: transform 0.3s ease;
+    padding-left: 14px;
+}
+
+.head-text a img:hover {
+    transform: translateX(14px);
+}
+
+@media (width <= 480px) {
+    .head-img {
+        display: none;
+    }
+
+    .about-me h1 {
+        font-size: 32px;
+    }
+}

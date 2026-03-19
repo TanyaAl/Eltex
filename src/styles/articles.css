@@ -1,0 +1,106 @@
+@import url("variables.css");
+
+.last-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: center;
+    margin-top: var(--space107);
+}
+
+.green-back {
+    position: relative;
+    overflow: hidden;
+}
+
+.green-back::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: var(--light-green);
+    border-radius: inherit;
+}
+
+.red-back {
+    position: relative;
+    overflow: hidden;
+}
+
+.red-back::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: var(--light-beige);
+    border-radius: inherit;
+}
+
+.btn-all-posts {
+    margin-top: -25px;
+    background-color: transparent;
+    border: solid 1px var(--green);
+    color: var(--green);
+}
+
+.red-text {
+    color: var(--orange);
+    margin-bottom: 8px;
+}
+
+.green-text {
+    color: var(--green);
+    margin-bottom: 8px;
+}
+
+.main-page-article h3 {
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+.main-page-article-text {
+    padding-left: 41px;
+    padding-top: 63px;
+    flex: 1;
+}
+
+.main-page-article {
+    border-radius: 8px;
+}
+
+.main-page-article-img {
+    flex: 1.5;
+    overflow: hidden;
+}
+
+@media (width <= 480px) {
+    .last-articles {
+        gap: 30px;
+    }
+
+    .main-page-article {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
+
+    .main-page-article h3 {
+        font-size: 22px;
+    }
+
+    .main-page-article-text {
+        padding: 20px;
+    }
+
+    .btn-all-posts {
+        margin-top: 20px;
+    }
+}
