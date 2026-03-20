@@ -20,8 +20,7 @@ const renderPosts = (post) => {
     year: 'numeric',
   }).replace('г', '').replace('.', '');
   clone.querySelector('.template-time').textContent = formatted;
-  const moreBtn = document.querySelector('.btn-more');
-  articlesGrid.insertBefore(clone, moreBtn);
+  articlesGrid.append(clone);
 };
 
 const getCountPosts = (obj) => {

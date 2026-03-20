@@ -3,7 +3,6 @@
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
     gap: 62px 34px;
     margin-top: var(--space77);
 }
@@ -41,8 +40,10 @@
 }
 
 .btn-more {
-    grid-column: 2/span 1;
-    justify-self: center;
+    /* grid-column: 2/span 1;
+    justify-self: center; */
+    display: block;
+    margin: 64px auto 0;
 }
 
 @media screen and (width <= 800px) {
