@@ -1,11 +1,10 @@
 @import url("variables.css");
 
 #stat {
+    position: fixed;
+    inset: auto 50px 400px auto;
     border: none;
     background-color: transparent;
-    margin-left: auto;
-    margin-right: 50px;
-
 }
 
 .stat-cards {
@@ -47,7 +46,7 @@
     margin-bottom: 16px;
 }
 
-.stat-btn {
+.close-stat-btn {
     width: 24px;
     height: 24px;
     margin: 0 0 16px 16px;

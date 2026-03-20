@@ -3,7 +3,19 @@
 .add-article {
     width: 100%;
     margin-top: 26px;
-    display: none;
+    transition: all 0.3s ease;
+}
+
+.invisible {
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+}
+
+.visible {
+    visibility:visible;
+    opacity: 1;
+    max-height: 355px;
 }
 
 .add-article h2 {
