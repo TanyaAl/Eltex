@@ -64,6 +64,12 @@ ul {
     transition: transform 0.3s ease;
 }
 
+.light-btn {
+    background-color: transparent;
+    border: solid 1px var(--green);
+    color: var(--green);
+}
+
 .card {
     transition: transform 0.3s ease;
 }
@@ -110,6 +116,11 @@ ul {
 
 .p21 {
     font-size: 21px;
+    line-height: 25px;
+}
+
+.p24 {
+    font-size: 24px;
     line-height: 25px;
 }
 
