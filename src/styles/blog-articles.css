@@ -14,7 +14,7 @@
     gap: 34px;
 }
 
-.main-card h2 {
+.main-card h3 {
     font-size: 40px;
     line-height: 55px;
     margin-bottom: 16px;
@@ -34,7 +34,7 @@
     margin-bottom: 8px;
 }
 
-.regular-card-text h4 {
+.regular-card-text h3 {
     font-size: 24px;
     font-weight: 400;
 }
