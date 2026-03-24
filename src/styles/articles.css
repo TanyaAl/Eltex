@@ -18,9 +18,6 @@
 
 .btn-all-posts {
     margin-top: -25px;
-    background-color: transparent;
-    border: solid 1px var(--green);
-    color: var(--green);
 }
 
 .red-text {

@@ -9,6 +9,7 @@
     <link rel="preload" href="assets/fonts/Inter-Bold.woff2" as="font" crossorigin="anonymous">
     <link rel="preload" href="assets/fonts/Inter-Regular.woff2" as="font" crossorigin="anonymous">
     <title>Блог</title>
+    <script defer="defer" type="module" src="./src/js/init.js"></script>
 </head>
 <body>
     <header>
@@ -92,11 +93,65 @@
                         <p class="p16"><time datetime="2024-12-15">15 декабря 2024</time></p>
                     </div>
                 </article>
-                <button class="btn btn-all-posts btn-more" type="button">
-                    <a href="#">Дальше</a>
-                </button>
             </div>
+            <a href="#" class="btn btn-all-posts light-btn btn-more" type="button">Дальше</a>
+            <template id="post-template">
+                <article class="card">
+                    <div class="regular-card"><img src="assets/template.webp" alt="article-img">
+                    </div>
+                    <div class="regular-card-text">
+                    <h3 class="mb-21 template-title"></h3>
+                    <p class="p16 template-time"><time></time></p>
+                    <p class="template-content invisible"></p>
+                    </div>
+                </article>
+            </template>
         </section>
+        <div class="tip-buttons">
+            <button type="button" title="Добавить статью" class="tip-btn add-post-btn"><img src="assets/add-article.svg" alt="icon-add-article"></button>
+            <button type="button" title="Просмотр статистики" class="tip-btn open-stat-btn"><img src="assets/stat.svg" alt="icon-stat"></button>
+        </div>
+        <section class="add-article invisible">
+            <form action="add-text" method="post" class="add-article-form">
+                <h2>Добавить статью</h2>
+                <div>
+                    <label for="title"></label>
+                    <input
+                        type="text"
+                        id="added-title"
+                        name="title"
+                        required
+                        placeholder="Заголовок"
+                    >
+                </div>
+                <div>
+                    <label for="content"></label>
+                    <textarea
+                        type="text"
+                        id="added-content"
+                        name="content"
+                        required
+                        placeholder="Текст статьи"
+                    ></textarea>
+                </div>
+                <div class="btns-for-new-articles">
+                    <button type="submit" class="btn btn-submit btn-submit-add-article">Добавить</button>
+                    <button type="button" class="btn light-btn close-form-btn">Отмена</button>
+                </div>
+        </form>
+        </section>
+        <dialog id="stat">
+            <div class="stat-cards">
+                <div class="stat-title">
+                    <h3>Статистика страницы</h3>
+                    <button id="closeBtn" type="button" class="close-stat-btn"><img src="assets/close.svg" alt="icon-close"></button>
+                </div>
+                <div class="stat-container">
+                    <div class="stat-item p24">Всего статей:<br><span class="count count-posts"></span></div>
+                    <div class="stat-item p24">Комментарии:<br><span class="count">0</span></div>
+                </div>
+            </div>
+        </dialog>
     </main>
     <footer id="footer" class="footer-blog">
         <div class="footer-container">
