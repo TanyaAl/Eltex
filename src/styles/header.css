@@ -32,6 +32,11 @@
     color: var(--green);
 }
 
+.list-menu a.active {
+    font-weight: 700;
+    color: var(--green);
+}
+
 .hamburger-menu {
     display: none;
 }

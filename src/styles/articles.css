@@ -8,40 +8,12 @@
     margin-top: var(--space107);
 }
 
-.green-back {
-    position: relative;
-    overflow: hidden;
+.last-articles > article:nth-of-type(odd) {
+  background: var(--light-beige);
 }
 
-.green-back::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-color: var(--light-green);
-    border-radius: inherit;
-}
-
-.red-back {
-    position: relative;
-    overflow: hidden;
-}
-
-.red-back::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-color: var(--light-beige);
-    border-radius: inherit;
+.last-articles > article:nth-of-type(even) {
+  background: var(--light-green);
 }
 
 .btn-all-posts {
