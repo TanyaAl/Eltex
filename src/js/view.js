@@ -38,6 +38,7 @@ const showForm = () => {
 
 const closeForm = () => {
   closeFormBtn.addEventListener('click', () => {
+    form.reset();
     addForm.classList.remove('visible');
     addForm.classList.add('invisible');
   });
