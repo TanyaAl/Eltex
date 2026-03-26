@@ -1,16 +1,20 @@
 const existPosts = document.querySelectorAll('.card');
-const getPosts = () => {
-  const initOldArticles = Array.from(existPosts).map((post, index) => ({
-    id: index + 1,
-    title: post.querySelector('h3').textContent,
-    content: post.querySelector('.text')?.textContent || '',
-  }));
+const getExistsPosts = () => {
+  const initOldArticles = Array.from(existPosts).map((post, index) => {
+    const id = String(index + 1);
+    post.setAttribute('data-id', id);
+    return {
+      id,
+      title: post.querySelector('h3').textContent,
+      content: post.querySelector('.text')?.textContent || '',
+    };
+  });
 
   return initOldArticles;
 };
 
 const state = {
-  posts: getPosts(),
+  posts: getExistsPosts(),
 };
 
 const addPostToState = (newPost) => {
@@ -19,4 +23,13 @@ const addPostToState = (newPost) => {
   state.posts.push(newPost);
 };
 
-export { getPosts, state, addPostToState };
+const deletePostFromState = (post) => {
+  const dataId = post.dataset.id;
+  const newPosts = state.posts.filter((item) => dataId !== String(item.id));
+  state.posts = newPosts;
+  return state;
+};
+
+export {
+  getExistsPosts, state, addPostToState, deletePostFromState,
+};

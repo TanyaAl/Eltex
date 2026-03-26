@@ -39,9 +39,18 @@
     font-weight: 400;
 }
 
+.delete-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    opacity: 0;
+}
+
+.delete-btn:hover {
+    border: solid 1px var(--light-grey);
+}
+
 .btn-more {
-    /* grid-column: 2/span 1;
-    justify-self: center; */
     display: block;
     margin: 64px auto 0;
 }
