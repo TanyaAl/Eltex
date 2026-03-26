@@ -1,3 +1,6 @@
+/* eslint-disable import/extensions */
+import { deletePostFromState } from './model.js';
+
 const form = document.querySelector('.add-article-form');
 const articlesGrid = document.querySelector('.articles-grid');
 const template = document.getElementById('post-template');
@@ -8,8 +11,9 @@ const closeStat = document.querySelector('.close-stat-btn');
 const addArticleBtn = document.querySelector('.add-post-btn');
 const statPosts = document.querySelector('.count-posts');
 const addForm = document.querySelector('.add-article');
+const deleteArtBtn = document.querySelector('.articles-grid');
 
-const renderPosts = (post) => {
+const renderNewPost = (post) => {
   const clone = template.content.cloneNode(true);
   clone.querySelector('.template-title').textContent = post.title;
   clone.querySelector('.template-content').textContent = post.content;
@@ -20,6 +24,8 @@ const renderPosts = (post) => {
     year: 'numeric',
   }).replace('г', '').replace('.', '');
   clone.querySelector('.template-time').textContent = formatted;
+  const templateArticle = clone.querySelector('.card');
+  templateArticle.dataset.id = post.id;
   articlesGrid.append(clone);
 };
 
@@ -60,6 +66,18 @@ const showStat = () => {
   });
 };
 
+const deleteArticle = () => {
+  deleteArtBtn.addEventListener('click', (e) => {
+    if (e.target.parentNode.classList.contains('delete-btn')) {
+      const post = e.target.closest('.card');
+      const newState = deletePostFromState(post);
+      post.remove();
+      getCountPosts(newState);
+    }
+  });
+};
+
 export {
-  form, renderPosts, getCountPosts, showForm, closeForm, showStat,
+  form, renderNewPost, getCountPosts, showForm,
+  closeForm, showStat, deleteArticle,
 };
