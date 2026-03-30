@@ -71,18 +71,6 @@ ul {
     transition: transform 0.3s ease;
 }
 
-.card:hover {
-    transform: scale(1.03);
-}
-
-.card:hover .delete-btn {
-    opacity: 1;
-}
-
-.btn:hover {
-    transform: scale(1.1);
-}
-
 .main-page-item {
     display: flex;
     flex-flow: row wrap-reverse;
@@ -139,6 +127,20 @@ ul {
 
 .logo {
     object-fit: contain;
+}
+
+@media (hover: hover) {
+    .card:hover {
+    transform: scale(1.03);
+    }
+
+    .card:hover .delete-btn {
+    opacity: 1;
+}
+
+    .btn:hover {
+        transform: scale(1.1);
+    }
 }
 
 @media screen and (width <= 800px) {

@@ -11,7 +11,19 @@ const closeStat = document.querySelector('.close-stat-btn');
 const addArticleBtn = document.querySelector('.add-post-btn');
 const statPosts = document.querySelector('.count-posts');
 const addForm = document.querySelector('.add-article');
-const deleteArtBtn = document.querySelector('.articles-grid');
+const articlesContainer = document.querySelector('.articles-grid');
+const btnOrString = document.querySelector('.btn-or-string');
+
+const renderBtnOrString = (obj) => {
+  if (obj.posts.length === 0) {
+    btnOrString.classList.remove('btn', 'light-btn', 'btn-more', 'btn-all-posts');
+    btnOrString.textContent = 'Нет статей';
+  } else {
+    btnOrString.classList.add('btn', 'light-btn', 'btn-more', 'btn-all-posts');
+    btnOrString.setAttribute('type', 'button');
+    btnOrString.textContent = 'Дальше';
+  }
+};
 
 const renderNewPost = (post) => {
   const clone = template.content.cloneNode(true);
@@ -27,6 +39,10 @@ const renderNewPost = (post) => {
   const templateArticle = clone.querySelector('.card');
   templateArticle.dataset.id = post.id;
   articlesGrid.append(clone);
+};
+
+const renderCurrentPosts = (obj) => {
+  obj.posts.map((post) => renderNewPost(post));
 };
 
 const getCountPosts = (obj) => {
@@ -67,17 +83,18 @@ const showStat = () => {
 };
 
 const deleteArticle = () => {
-  deleteArtBtn.addEventListener('click', (e) => {
+  articlesContainer.addEventListener('click', (e) => {
     if (e.target.parentNode.classList.contains('delete-btn')) {
       const post = e.target.closest('.card');
       const newState = deletePostFromState(post);
       post.remove();
       getCountPosts(newState);
+      renderBtnOrString(newState);
     }
   });
 };
 
 export {
-  form, renderNewPost, getCountPosts, showForm,
+  form, renderNewPost, renderCurrentPosts, renderBtnOrString, getCountPosts, showForm,
   closeForm, showStat, deleteArticle,
 };
