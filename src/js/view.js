@@ -13,14 +13,17 @@ const statPosts = document.querySelector('.count-posts');
 const addForm = document.querySelector('.add-article');
 const articlesContainer = document.querySelector('.articles-grid');
 const btnOrString = document.querySelector('.btn-or-string');
+const btnOrStringContainer = document.querySelector('.btn-or-link-container');
 
 const renderBtnOrString = (obj) => {
   if (obj.posts.length === 0) {
     btnOrString.classList.remove('btn', 'light-btn', 'btn-more', 'btn-all-posts');
+    btnOrStringContainer.classList.add('string');
     btnOrString.textContent = 'Нет статей';
   } else {
     btnOrString.classList.add('btn', 'light-btn', 'btn-more', 'btn-all-posts');
     btnOrString.setAttribute('type', 'button');
+    btnOrStringContainer.classList.remove('string');
     btnOrString.textContent = 'Дальше';
   }
 };
