@@ -76,6 +76,11 @@
     text-align: center;
 }
 
+.string {
+    margin-top: 150px;
+    margin-bottom: 240px;
+}
+
 @media screen and (width <= 800px) {
     .articles-grid {
         grid-template-columns: repeat(2, 1fr);
