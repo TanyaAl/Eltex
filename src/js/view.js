@@ -14,6 +14,7 @@ const addForm = document.querySelector('.add-article');
 const articlesContainer = document.querySelector('.articles-grid');
 const btnOrString = document.querySelector('.btn-or-string');
 const btnOrStringContainer = document.querySelector('.btn-or-link-container');
+const loader = document.querySelector('.loader-overlay');
 
 const renderBtnOrString = (obj) => {
   if (obj.posts.length === 0) {
@@ -26,6 +27,18 @@ const renderBtnOrString = (obj) => {
     btnOrStringContainer.classList.remove('string');
     btnOrString.textContent = 'Дальше';
   }
+};
+
+const displayLoader = (isVisible) => {
+  loader.classList.toggle('show', isVisible);
+  loader.classList.toggle('hide', !isVisible);
+};
+
+const disableForm = (isDisable) => {
+  form.querySelectorAll('input, textarea, button').forEach((el) => {
+    // eslint-disable-next-line no-param-reassign
+    el.disabled = isDisable;
+  });
 };
 
 const renderNewPost = (post) => {
@@ -98,6 +111,7 @@ const deleteArticle = () => {
 };
 
 export {
-  form, renderNewPost, renderCurrentPosts, renderBtnOrString, getCountPosts, showForm,
+  form, displayLoader, disableForm, renderNewPost, renderCurrentPosts,
+  renderBtnOrString, getCountPosts, showForm,
   closeForm, showStat, deleteArticle,
 };

@@ -1,24 +1,35 @@
 /* eslint-disable import/extensions */
 import { state, addPostToState } from './model.js';
 import {
-  form, getCountPosts, renderCurrentPosts, renderBtnOrString, renderNewPost, showForm,
+  form, displayLoader, disableForm, getCountPosts, renderCurrentPosts,
+  renderBtnOrString, renderNewPost, showForm,
   closeForm, showStat, deleteArticle,
 } from './view.js';
 import Article from './Article_template.js';
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  displayLoader(true);
   const data = new FormData(form);
   const newPost = new Article(Object.fromEntries(data.entries()));
-  addPostToState(newPost);
-  renderNewPost(newPost);
-  getCountPosts(state);
-  renderBtnOrString(state);
-  form.reset();
+  disableForm(true);
+  setTimeout(() => {
+    addPostToState(newPost);
+    renderNewPost(newPost);
+    displayLoader(false);
+    getCountPosts(state);
+    renderBtnOrString(state);
+    disableForm(false);
+    form.reset();
+  }, 1000);
 });
 
 const initApp = () => {
-  renderCurrentPosts(state);
+  displayLoader(true);
+  setTimeout(() => {
+    renderCurrentPosts(state);
+    displayLoader(false);
+  }, 1000);
   showForm();
   closeForm();
   showStat();
