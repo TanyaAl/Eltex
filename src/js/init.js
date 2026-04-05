@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 import { state, addPostToState } from './model.js';
 import {
-  form, displayLoader, disableForm, getCountPosts, renderCurrentPosts,
+  form, toggleLoaderVisibility, toggleDisableFormState, getCountPosts, renderCurrentPosts,
   renderBtnOrString, renderNewPost, showForm,
   closeForm, showStat, deleteArticle,
 } from './view.js';
@@ -9,26 +9,26 @@ import Article from './Article_template.js';
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  displayLoader(true);
+  toggleLoaderVisibility(true);
   const data = new FormData(form);
   const newPost = new Article(Object.fromEntries(data.entries()));
-  disableForm(true);
+  toggleDisableFormState(true);
   setTimeout(() => {
     addPostToState(newPost);
     renderNewPost(newPost);
-    displayLoader(false);
+    toggleLoaderVisibility(false);
     getCountPosts(state);
     renderBtnOrString(state);
-    disableForm(false);
+    toggleDisableFormState(false);
     form.reset();
   }, 1000);
 });
 
 const initApp = () => {
-  displayLoader(true);
+  toggleLoaderVisibility(true);
   setTimeout(() => {
     renderCurrentPosts(state);
-    displayLoader(false);
+    toggleLoaderVisibility(false);
   }, 1000);
   showForm();
   closeForm();

@@ -144,9 +144,14 @@ textarea:disabled {
   opacity: 0.7; 
 }
 
-button:disabled {
+.btn-submit-add-article:disabled {
     background-color: var(--light-grey);
     color: var(--white)
+}
+
+.close-form-btn:disabled {
+    border-color: var(--light-grey);
+    color: var(--light-grey)
 }
 
 

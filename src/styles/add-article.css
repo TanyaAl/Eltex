@@ -2,7 +2,6 @@
 
 .add-article {
     width: 100%;
-    margin-top: 26px;
     transition: all 0.3s ease;
 }
 
@@ -20,6 +19,10 @@
 
 .add-article h2 {
     margin-bottom: 46px;
+}
+
+.add-article-form {
+    margin-top: 26px;
 }
 
 .add-article-form input {

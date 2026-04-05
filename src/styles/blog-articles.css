@@ -55,7 +55,6 @@
     margin-bottom: 16px;
 }
 
-
 .delete-btn {
     position: absolute;
     top: 16px;
@@ -67,17 +66,13 @@
     border: solid 1px var(--light-grey);
 }
 
-.btn-more {
-    display: block;
-    margin: 64px auto 0;
-}
-
 .btn-or-link-container {
     text-align: center;
+    margin-top: 64px;
 }
 
 .string {
-    margin-top: 150px;
+    margin-top: 86px;
     margin-bottom: 240px;
 }
 

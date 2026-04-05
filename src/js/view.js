@@ -12,29 +12,22 @@ const addArticleBtn = document.querySelector('.add-post-btn');
 const statPosts = document.querySelector('.count-posts');
 const addForm = document.querySelector('.add-article');
 const articlesContainer = document.querySelector('.articles-grid');
-const btnOrString = document.querySelector('.btn-or-string');
-const btnOrStringContainer = document.querySelector('.btn-or-link-container');
+const btnMore = document.querySelector('.btn-more');
+const string = document.querySelector('.string');
 const loader = document.querySelector('.loader-overlay');
 
 const renderBtnOrString = (obj) => {
-  if (obj.posts.length === 0) {
-    btnOrString.classList.remove('btn', 'light-btn', 'btn-more', 'btn-all-posts');
-    btnOrStringContainer.classList.add('string');
-    btnOrString.textContent = 'Нет статей';
-  } else {
-    btnOrString.classList.add('btn', 'light-btn', 'btn-more', 'btn-all-posts');
-    btnOrString.setAttribute('type', 'button');
-    btnOrStringContainer.classList.remove('string');
-    btnOrString.textContent = 'Дальше';
-  }
+  const isEmpty = obj.posts.length === 0;
+  string.classList.toggle('hide', !isEmpty);
+  btnMore.classList.toggle('hide', isEmpty);
 };
 
-const displayLoader = (isVisible) => {
+const toggleLoaderVisibility = (isVisible) => {
   loader.classList.toggle('show', isVisible);
   loader.classList.toggle('hide', !isVisible);
 };
 
-const disableForm = (isDisable) => {
+const toggleDisableFormState = (isDisable) => {
   form.querySelectorAll('input, textarea, button').forEach((el) => {
     // eslint-disable-next-line no-param-reassign
     el.disabled = isDisable;
@@ -58,7 +51,7 @@ const renderNewPost = (post) => {
 };
 
 const renderCurrentPosts = (obj) => {
-  obj.posts.map((post) => renderNewPost(post));
+  obj.posts.forEach((post) => renderNewPost(post));
 };
 
 const getCountPosts = (obj) => {
@@ -111,7 +104,7 @@ const deleteArticle = () => {
 };
 
 export {
-  form, displayLoader, disableForm, renderNewPost, renderCurrentPosts,
+  form, toggleLoaderVisibility, toggleDisableFormState, renderNewPost, renderCurrentPosts,
   renderBtnOrString, getCountPosts, showForm,
   closeForm, showStat, deleteArticle,
 };

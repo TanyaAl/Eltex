@@ -45,7 +45,8 @@
             <div class="articles-grid">
             </div>
             <div class="btn-or-link-container">
-                <a href="#" class="btn-or-string"></a>
+                <a href="#" type = "button" class="btn light-btn btn-more btn-all-posts hide">Дальше</a>
+                <p class="string">Нет статей</p>
             </div>
             <template id="post-template">
                 <article class="card" data-id="">
@@ -59,9 +60,9 @@
                     <div class="delete-btn"><img src="assets/delete.svg" alt="delete-icon"></div>
                 </article>
             </template>
-        <div class="loader-overlay">
-            <div class="loader"></div>
-        </div>
+            <div class="loader-overlay">
+                <div class="loader"></div>
+            </div>
         </section>
         <div class="tip-buttons">
             <button type="button" title="Добавить статью" class="tip-btn add-post-btn"><img src="assets/add-article.svg" alt="icon-add-article"></button>
@@ -108,7 +109,6 @@
                 </div>
             </div>
         </dialog>
-
     </main>
     <footer id="footer" class="footer-blog">
         <div class="footer-container">
