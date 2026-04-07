@@ -1,0 +1,16 @@
+main {
+  max-width: 1175px;
+  margin: 0 auto;
+}
+
+.main-page-info {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+@media screen and (width <= 800px) {
+  main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

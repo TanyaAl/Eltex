@@ -1,0 +1,70 @@
+@use '../../../../variables';
+
+header {
+  max-width: 1175px;
+  margin: 0 auto;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
+.list-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.logo-title {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--logo-color);
+}
+
+.list-menu li a {
+  font-size: 15px;
+  transition:
+    color 0.3s ease,
+    font-weight 0.3s ease;
+}
+
+.list-menu li a:hover {
+  font-weight: 700;
+  color: var(--green);
+}
+
+.list-menu li.active {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.hamburger-menu {
+  display: none;
+}
+
+@media screen and (width <= 800px) {
+  header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (width <= 480px) {
+  .logo-title {
+    font-size: 20px;
+  }
+
+  .hamburger-menu {
+    display: block;
+    position: relative;
+  }
+
+  .list-menu {
+    display: none;
+  }
+}

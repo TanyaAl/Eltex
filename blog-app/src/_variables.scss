@@ -1,0 +1,31 @@
+:root {
+  --logo-color: #1a1b20;
+  --dark-dark-grey: #1e2128;
+  --dark-grey: #323747;
+  --dark-opacity-grey: #323743bf;
+  --middle-grey: #68686a;
+  --light-grey: #bdc1ca;
+  --orange: #db5e31;
+  --light-beige: #fef3ef;
+  --footer-white: #fdfeff;
+  --form-border-white: #dde0e7;
+  --white: #fff;
+  --green: #61c15c;
+  --dark-green: #64bf60;
+  --light-green: #f4fbf4;
+  --space112: 112px;
+  --space107: 107px;
+  --space91: 91px;
+  --space77: 77px;
+  --space67: 67px;
+  --space57: 57px;
+
+  @media (width <= 480px) {
+    --space112: 56px;
+    --space107: 53px;
+    --space91: 45px;
+    --space77: 38px;
+    --space67: 33px;
+    --space57: 28px;
+  }
+}

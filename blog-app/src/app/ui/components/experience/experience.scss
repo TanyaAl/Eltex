@@ -1,0 +1,83 @@
+@use '../../../../variables';
+
+.experience {
+  display: flex;
+  flex-direction: row;
+  gap: 42px;
+  margin-top: var(--space107);
+}
+
+.experience-title {
+  flex: 1;
+}
+
+.experience-title h2 {
+  font-size: 52px;
+  margin-bottom: 13px;
+}
+
+.experience-list {
+  flex: 1;
+}
+
+.firm-logo {
+  height: 75px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-place {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  padding-top: 38px;
+  padding-bottom: 38px;
+}
+
+.work-place::after {
+  position: absolute;
+  content: '';
+  display: block;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--light-grey);
+}
+
+.work-place h3 {
+  font-weight: 400;
+}
+
+@media screen and (width <= 800px) {
+  .experience {
+    flex-direction: column;
+  }
+}
+
+@media (width <= 480px) {
+  .experience {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .work-place {
+    flex-direction: column;
+  }
+
+  .experience-title h2 {
+    font-size: 32px;
+  }
+
+  .experience-title p {
+    font-size: 20px;
+  }
+
+  .firm-logo {
+    display: none;
+  }
+}

@@ -1,0 +1,13 @@
+@use '../../../../variables';
+
+.last-articles {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+  margin-top: var(--space107);
+}
+
+.btn-all-posts {
+  margin-top: -25px;
+}
