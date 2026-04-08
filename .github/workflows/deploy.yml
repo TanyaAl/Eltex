@@ -1,4 +1,6 @@
 name: Deploy to GitHub Pages
+git config --global user.name "Deploy Bot"
+git config --global user.email "deploy@myproject.com"
 
 on:
   push:
