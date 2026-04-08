@@ -1,12 +1,3 @@
-.card {
-  position: relative;
-  transition: transform 0.3s ease;
-}
-
-.main-content {
-  position: relative;
-}
-
 .p13 {
   font-size: 13px;
 }
@@ -68,18 +59,4 @@ textarea:disabled {
 .close-form-btn:disabled {
   border-color: var(--light-grey);
   color: var(--light-grey);
-}
-
-@media (hover: hover) {
-  .card:hover {
-    transform: scale(1.03);
-  }
-
-  .card:hover .delete-btn {
-    opacity: 1;
-  }
-
-  .btn:hover {
-    transform: scale(1.1);
-  }
 }

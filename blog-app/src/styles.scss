@@ -33,6 +33,11 @@ html {
   scroll-behavior: smooth;
 }
 
+main {
+  max-width: 1175px;
+  margin: 0 auto;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -108,4 +113,23 @@ ul {
 
 .logo {
   object-fit: contain;
+}
+
+.card {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: scale(1.03);
+  }
+
+  .card:hover .delete-btn {
+    opacity: 1;
+  }
+
+  .btn:hover {
+    transform: scale(1.1);
+  }
 }
