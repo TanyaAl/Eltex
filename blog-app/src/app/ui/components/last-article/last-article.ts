@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-last-article',
   imports: [],
   templateUrl: './last-article.html',
-  styleUrl: './last-article-1.scss',
+  styleUrl: './last-article.scss',
 })
 export class LastArticle {}
