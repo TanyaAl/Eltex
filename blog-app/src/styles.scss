@@ -133,3 +133,10 @@ ul {
     transform: scale(1.1);
   }
 }
+
+@media screen and (width <= 800px) {
+  main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

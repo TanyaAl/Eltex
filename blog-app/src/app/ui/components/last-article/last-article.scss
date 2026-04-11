@@ -1,10 +1,24 @@
-.red-text {
-  color: var(--orange);
-  margin-bottom: 8px;
+@use '../../../../variables';
+
+:host {
+  &:nth-child(odd) .card {
+    background-color: var(--light-beige);
+
+    .category {
+      color: var(--orange);
+    }
+  }
+
+  &:nth-child(even) .card {
+    background-color: var(--light-green);
+
+    .category {
+      color: var(--green);
+    }
+  }
 }
 
-.green-text {
-  color: var(--green);
+.category {
   margin-bottom: 8px;
 }
 

@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LastArticle1 } from '../last-article-1/last-article-1';
-import { LastArticle2 } from '../last-article-2/last-article-2';
+import { LastArticle } from '../last-article/last-article';
 
 @Component({
   selector: 'app-last-articles',
-  imports: [LastArticle1, LastArticle2, RouterModule],
+  imports: [LastArticle, RouterModule],
   templateUrl: './last-articles.html',
   styleUrl: './last-articles.scss',
 })
