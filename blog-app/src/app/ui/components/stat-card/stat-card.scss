@@ -1,0 +1,55 @@
+@use '../../../../variables';
+
+#stat {
+  position: fixed;
+  inset: auto 50px 400px auto;
+  border: none;
+  background-color: transparent;
+}
+
+.stat-cards {
+  padding: 18px;
+  border: solid 1px var(--light-grey);
+  border-radius: 10px;
+  background-color: var(--white);
+}
+
+.stat-cards h3 {
+  font-size: 32px;
+}
+
+.stat-container {
+  display: flex;
+  flex-direction: row;
+  gap: 26px;
+}
+
+.stat-item {
+  padding: 16px;
+  border: solid 1px var(--light-grey);
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 25%);
+}
+
+.count {
+  font-size: 40px;
+  font-weight: 700;
+  display: inline-block;
+  margin-top: 16px;
+}
+
+.stat-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.close-stat-btn {
+  width: 24px;
+  height: 24px;
+  margin: 0 0 16px 16px;
+  border: none;
+  background-color: transparent;
+}

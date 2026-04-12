@@ -6,7 +6,7 @@
         <a routerLink="/">Главная</a>
       </li>
       <li routerLinkActive="active"><a routerLink="/blog">Блог</a></li>
-      <li routerLinkActive="active"><a href="#footer">Контакты</a></li>
+      <li><a [routerLink]="[]" fragment="footer">Контакты</a></li>
     </ul>
     <div class="hamburger-menu">
       <input id="menu-toggle" type="checkbox" />

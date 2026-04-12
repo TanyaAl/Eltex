@@ -1,5 +1,6 @@
 <section class="last-articles">
-  <app-last-article></app-last-article>
-  <app-last-article></app-last-article>
+  @for (article of articles; track article) {
+    <app-last-article [article]="article"></app-last-article>
+  }
   <a routerLink="/blog" class="btn btn-all-posts light-btn">Посмотреть все статьи</a>
 </section>

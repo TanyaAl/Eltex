@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-last-article',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './last-article.html',
   styleUrl: './last-article.scss',
 })
-export class LastArticle {}
+export class LastArticle {
+  @Input() article: any;
+}
