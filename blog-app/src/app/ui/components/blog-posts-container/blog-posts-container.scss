@@ -1,0 +1,26 @@
+@use '../../../../variables';
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 62px 34px;
+  margin-top: var(--space77);
+}
+
+@media screen and (width <= 800px) {
+  .articles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .articles-grid article:first-child {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (width <= 480px) {
+  .articles-grid {
+    row-gap: 30px;
+  }
+}

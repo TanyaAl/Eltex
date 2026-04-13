@@ -7,5 +7,10 @@ import { Component, Input } from '@angular/core';
   styleUrl: './last-article.scss',
 })
 export class LastArticle {
-  @Input() article: any;
+  @Input() article!: {
+    id: number;
+    category: string;
+    title: string;
+    text: string;
+  };
 }

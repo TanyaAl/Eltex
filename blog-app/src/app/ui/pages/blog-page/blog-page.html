@@ -1,10 +1,10 @@
 <main>
   <section class="main-content">
     <app-blog-page-title></app-blog-page-title>
-    <app-articles-container></app-articles-container>
-    <app-btn-or-link></app-btn-or-link>
+    <app-blog-posts-container (countChange)="postsCount = $event"></app-blog-posts-container>
+    <app-btn-or-link [count]="postsCount"></app-btn-or-link>
     <app-tip-buttons></app-tip-buttons>
     <app-form-for-add-blog-post></app-form-for-add-blog-post>
-    <app-stat-card></app-stat-card>
+    <app-stat-card [count]="postsCount"></app-stat-card>
   </section>
 </main>

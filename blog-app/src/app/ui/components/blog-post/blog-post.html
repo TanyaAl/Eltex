@@ -1,11 +1,13 @@
-<template id="post-template">
-  <article class="card" data-id="">
-    <div class="article-photo"><img src="./template.webp" alt="article-img" /></div>
-    <div class="card-text">
-      <h3 class="mb-21 template-title"></h3>
-      <p class="template-content">fgfgfgfgfg</p>
-      <p class="p16 template-time"><time></time></p>
-    </div>
-    <div class="delete-btn"><img src="./delete.svg" alt="delete-icon" /></div>
-  </article>
-</template>
+<!-- <template id="post-template"> -->
+<article class="card" data-id="">
+  <div class="article-photo"><img src="./template.webp" alt="article-img" /></div>
+  <div class="card-text">
+    <h3 class="mb-21 template-title">{{ blog_post.title }}</h3>
+    <p class="template-content">{{ blog_post.text }}</p>
+    <p class="p16 template-time">
+      <time>{{ blog_post.date }}</time>
+    </p>
+  </div>
+  <div class="delete-btn"><img src="./delete.svg" alt="delete-icon" /></div>
+</article>
+<!-- </template> -->

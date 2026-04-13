@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-stat-card',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './stat-card.html',
   styleUrl: './stat-card.scss',
 })
-export class StatCard {}
+export class StatCard {
+  @Input() count!: number;
+}

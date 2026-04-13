@@ -1,0 +1,5 @@
+<div class="articles-grid">
+  @for (blog_post of blog_posts; track blog_post.id) {
+    <app-blog-post [blog_post]="blog_post"></app-blog-post>
+  }
+</div>
