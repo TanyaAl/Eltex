@@ -25,5 +25,8 @@ export class TipButtons {
 
   openForm() {
     this.addPost.emit();
+    setTimeout(() => {
+      document.querySelector('.add-article')?.scrollIntoView({ behavior: 'smooth' });
+    });
   }
 }
