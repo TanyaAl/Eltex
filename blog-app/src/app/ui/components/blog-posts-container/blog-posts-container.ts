@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { BlogPost } from '../blog-post/blog-post';
 
 @Component({
@@ -74,6 +74,8 @@ export class BlogPostsContainer {
     },
   ];
 
+  @Input() arrayPosts = this.blog_posts;
+
   @Output() countChange = new EventEmitter<number>();
 
   ngOnInit() {
@@ -81,6 +83,11 @@ export class BlogPostsContainer {
   }
 
   emitCount() {
+    this.countChange.emit(this.blog_posts.length);
+  }
+
+  deletePost(id: number) {
+    this.blog_posts = this.blog_posts.filter((post) => post.id !== id);
     this.countChange.emit(this.blog_posts.length);
   }
 }

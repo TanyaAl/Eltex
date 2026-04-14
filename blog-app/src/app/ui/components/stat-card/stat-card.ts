@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+/* eslint-disable import/prefer-default-export */
+import { Component, Inject } from '@angular/core';
+import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-stat-card',
@@ -7,5 +9,16 @@ import { Component, Input } from '@angular/core';
   styleUrl: './stat-card.scss',
 })
 export class StatCard {
-  @Input() count!: number;
+  count: number;
+
+  constructor(
+    private dialogRef: DialogRef,
+    @Inject(DIALOG_DATA) public data: { count: number },
+  ) {
+    this.count = data.count;
+  }
+
+  close() {
+    this.dialogRef.close();
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+/* eslint-disable import/prefer-default-export */
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-blog-post',
@@ -15,4 +16,10 @@ export class BlogPost {
     text: string;
     date: string;
   };
+
+  @Output() delete = new EventEmitter<number>();
+
+  onDelete() {
+    this.delete.emit(this.blog_post.id);
+  }
 }

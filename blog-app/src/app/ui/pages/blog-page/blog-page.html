@@ -3,8 +3,10 @@
     <app-blog-page-title></app-blog-page-title>
     <app-blog-posts-container (countChange)="postsCount = $event"></app-blog-posts-container>
     <app-btn-or-link [count]="postsCount"></app-btn-or-link>
-    <app-tip-buttons></app-tip-buttons>
-    <app-form-for-add-blog-post></app-form-for-add-blog-post>
-    <app-stat-card [count]="postsCount"></app-stat-card>
+    <app-tip-buttons [postsCount]="postsCount" (addPost)="isFormOpen = true"></app-tip-buttons>
+    <app-form-for-add-blog-post
+      [isOpen]="isFormOpen"
+      (close)="isFormOpen = false"
+    ></app-form-for-add-blog-post>
   </section>
 </main>

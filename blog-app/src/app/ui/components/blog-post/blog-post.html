@@ -1,4 +1,3 @@
-<!-- <template id="post-template"> -->
 <article class="card" data-id="">
   <div class="article-photo"><img src="./template.webp" alt="article-img" /></div>
   <div class="card-text">
@@ -8,6 +7,5 @@
       <time>{{ blog_post.date }}</time>
     </p>
   </div>
-  <div class="delete-btn"><img src="./delete.svg" alt="delete-icon" /></div>
+  <div (click)="onDelete()" class="delete-btn"><img src="./delete.svg" alt="delete-icon" /></div>
 </article>
-<!-- </template> -->

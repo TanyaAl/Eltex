@@ -5,14 +5,15 @@ import { BtnOrLink } from '../../components/btn-or-link/btn-or-link';
 import { BlogPostsContainer } from '../../components/blog-posts-container/blog-posts-container';
 import { TipButtons } from '../../components/tip-buttons/tip-buttons';
 import { FormForAddBlogPost } from '../../components/form-for-add-blog-post/form-for-add-blog-post';
-import { StatCard } from '../../components/stat-card/stat-card';
 
 @Component({
   selector: 'app-blog-page',
-  imports: [BlogPageTitle, BlogPostsContainer, BtnOrLink, TipButtons, FormForAddBlogPost, StatCard],
+  imports: [BlogPageTitle, BlogPostsContainer, BtnOrLink, TipButtons, FormForAddBlogPost],
   templateUrl: './blog-page.html',
   styleUrl: './blog-page.scss',
 })
 export class BlogPage {
   postsCount = 0;
+
+  isFormOpen = false;
 }
