@@ -10,7 +10,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class BlogPost {
   @Input() blog_post!: {
-    id: number;
+    id: any;
     category: string;
     title: string;
     text: string;

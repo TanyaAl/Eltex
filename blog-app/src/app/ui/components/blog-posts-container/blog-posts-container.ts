@@ -12,7 +12,7 @@ import { BlogPost } from '../blog-post/blog-post';
 export class BlogPostsContainer {
   blog_posts = [
     {
-      id: 1,
+      id: crypto.randomUUID(),
       category: 'Дизайн',
       title: 'Как создать адаптивный дизайн за 30 минут',
       text: `В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые
@@ -21,14 +21,14 @@ export class BlogPostsContainer {
       date: '15.12.2025',
     },
     {
-      id: 2,
+      id: crypto.randomUUID(),
       category: 'Разработка',
       title: 'Как быстро сверстать лендинг',
       text: 'В этой статье я расскажу о ключевых принципах быстрой верстки лендингов, которые помогают создавать аккуратные и адаптивные страницы за минимальное время. Вы узнаете о правильной структуре блоков, переиспользовании компонентов и практических приёмах, которые позволяют ускорить разработку без потери качества.',
       date: '15.12.2025',
     },
     {
-      id: 3,
+      id: crypto.randomUUID(),
       category: 'Дизайн',
       title: 'Типографика в вебе: как выбрать шрифты правильно',
       text: `Типографика играет ключевую роль в восприятии интерфейса. В этой статье вы узнаете,
@@ -37,7 +37,7 @@ export class BlogPostsContainer {
       date: '15.12.2025',
     },
     {
-      id: 4,
+      id: crypto.randomUUID(),
       category: 'Разработка',
       title: 'Основы оптимизации производительности сайта',
       text: `Быстрая загрузка — важнейший фактор успешного сайта. В этой статье разберём,
@@ -46,7 +46,7 @@ export class BlogPostsContainer {
       date: '15.12.2025',
     },
     {
-      id: 5,
+      id: crypto.randomUUID(),
       category: 'Дизайн',
       title: 'Цветовые схемы: как не ошибиться с выбором',
       text: `Цвет влияет на эмоции пользователя и восприятие бренда. В этой статье вы узнаете,
@@ -55,7 +55,7 @@ export class BlogPostsContainer {
       date: '15.12.2025',
     },
     {
-      id: 6,
+      id: crypto.randomUUID(),
       category: 'Разработка',
       title: 'Компонентный подход: как ускорить разработку',
       text: `Современная разработка невозможна без переиспользуемых компонентов. В статье рассмотрим,
@@ -64,7 +64,7 @@ export class BlogPostsContainer {
       date: '15.12.2025',
     },
     {
-      id: 7,
+      id: crypto.randomUUID(),
       category: 'Разработка',
       title: 'Работа с API: как правильно отображать данные',
       text: `Практически любое современное приложение взаимодействует с сервером. В этой статье
@@ -86,8 +86,9 @@ export class BlogPostsContainer {
     this.countChange.emit(this.blog_posts.length);
   }
 
-  deletePost(id: number) {
+  deletePost(id: any) {
     this.blog_posts = this.blog_posts.filter((post) => post.id !== id);
+    console.log(id);
     this.countChange.emit(this.blog_posts.length);
   }
 }
