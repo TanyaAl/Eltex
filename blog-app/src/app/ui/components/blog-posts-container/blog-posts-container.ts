@@ -88,7 +88,6 @@ export class BlogPostsContainer {
 
   deletePost(id: any) {
     this.blog_posts = this.blog_posts.filter((post) => post.id !== id);
-    console.log(id);
     this.countChange.emit(this.blog_posts.length);
   }
 }

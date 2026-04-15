@@ -11,12 +11,6 @@
   .articles-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .articles-grid article:first-child {
-    grid-column: span 2;
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 @media (width <= 480px) {
