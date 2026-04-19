@@ -1,14 +1,16 @@
-<dialog id="stat">
+<div id="stat">
   <div class="stat-cards">
     <div class="stat-title">
       <h3>Статистика страницы</h3>
-      <button id="closeBtn" type="button" class="close-stat-btn">
+      <button (click)="close()" id="closeBtn" type="button" class="close-stat-btn">
         <img src="./close.svg" alt="icon-close" />
       </button>
     </div>
     <div class="stat-container">
-      <div class="stat-item p24">Всего статей:<br /><span class="count count-posts"></span></div>
+      <div class="stat-item p24">
+        Всего статей:<br /><span class="count count-posts">{{ count }}</span>
+      </div>
       <div class="stat-item p24">Комментарии:<br /><span class="count">0</span></div>
     </div>
   </div>
-</dialog>
+</div>

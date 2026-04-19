@@ -9,19 +9,18 @@
       <li><a [routerLink]="[]" fragment="footer">Контакты</a></li>
     </ul>
     <div class="hamburger-menu">
-      <input id="menu-toggle" type="checkbox" />
-      <label class="menu-btn" for="menu-toggle">
+      <button class="menu-btn" (click)="toggleMenu()">
         <span></span>
-      </label>
-      <ul class="menu-box">
+      </button>
+      <ul class="menu-box" [class.open]="isMenuOpen">
         <li class="p20" routerLinkActive="active">
-          <a class="menu-item" routerLink="/">Главная</a>
+          <a class="menu-item" routerLink="/" (click)="closeMenu()">Главная</a>
         </li>
         <li class="p20" routerLinkActive="active">
-          <a class="menu-item" routerLink="/blog">Блог</a>
+          <a class="menu-item" routerLink="/blog" (click)="closeMenu()">Блог</a>
         </li>
-        <li class="p20" routerLinkActive="active">
-          <a class="menu-item" href="#footer">Контакты</a>
+        <li class="p20">
+          <a class="menu-item" href="#footer" (click)="closeMenu()">Контакты</a>
         </li>
       </ul>
     </div>

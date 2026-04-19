@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-btn-or-link',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './btn-or-link.html',
   styleUrl: './btn-or-link.scss',
 })
-export class BtnOrLink {}
+export class BtnOrLink {
+  @Input() count!: number;
+}

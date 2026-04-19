@@ -1,4 +1,7 @@
 <div class="btn-or-link-container">
-  <!-- <a href="#" type="button" class="btn light-btn btn-more btn-all-posts hide">Дальше</a> -->
-  <p class="string">Нет статей</p>
+  @if (count > 0) {
+    <button type="button" class="btn light-btn btn-more btn-all-posts">Дальше</button>
+  } @else {
+    <p class="string">Нет статей</p>
+  }
 </div>
