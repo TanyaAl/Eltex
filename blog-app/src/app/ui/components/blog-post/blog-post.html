@@ -1,10 +1,10 @@
 <article class="card" data-id="">
   <div class="article-photo"><img src="./template.webp" alt="article-img" /></div>
   <div class="card-text">
-    <h3 class="mb-21 template-title">{{ blog_post.title }}</h3>
-    <p class="template-content">{{ blog_post.text }}</p>
+    <h3 class="mb-21 template-title">{{ blogPost.title }}</h3>
+    <p class="template-content">{{ blogPost.text }}</p>
     <p class="p16 template-time">
-      <time>{{ blog_post.date }}</time>
+      <time>{{ blogPost.date }}</time>
     </p>
   </div>
   <div (click)="onDelete()" class="delete-btn"><img src="./delete.svg" alt="delete-icon" /></div>

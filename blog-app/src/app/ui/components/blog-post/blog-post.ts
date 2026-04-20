@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { BlogPostType } from '../../../types/BlogPostType';
 
 @Component({
   selector: 'app-blog-post',
@@ -9,17 +10,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './blog-post.scss',
 })
 export class BlogPost {
-  @Input() blog_post!: {
-    id: any;
-    category: string;
-    title: string;
-    text: string;
-    date: string;
-  };
+  @Input() blogPost!: BlogPostType;
 
-  @Output() delete = new EventEmitter<number>();
+  @Output() delete = new EventEmitter<string>();
 
-  onDelete() {
-    this.delete.emit(this.blog_post.id);
+  protected onDelete() {
+    this.delete.emit(this.blogPost.id);
   }
 }

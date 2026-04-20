@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { BlogPost } from '../blog-post/blog-post';
+import { BlogPostType } from '../../../types/BlogPostType';
 
 @Component({
   selector: 'app-blog-posts-container',
@@ -10,7 +11,7 @@ import { BlogPost } from '../blog-post/blog-post';
   styleUrl: './blog-posts-container.scss',
 })
 export class BlogPostsContainer {
-  blog_posts = [
+  protected blogPosts: BlogPostType[] = [
     {
       id: crypto.randomUUID(),
       category: 'Дизайн',
@@ -74,20 +75,20 @@ export class BlogPostsContainer {
     },
   ];
 
-  @Input() arrayPosts = this.blog_posts;
+  @Input() arrayPosts: BlogPostType[] = this.blogPosts;
 
   @Output() countChange = new EventEmitter<number>();
 
-  ngOnInit() {
-    this.countChange.emit(this.blog_posts.length);
+  private emitCount() {
+    this.countChange.emit(this.blogPosts.length);
   }
 
-  emitCount() {
-    this.countChange.emit(this.blog_posts.length);
+  protected ngOnInit() {
+    this.emitCount();
   }
 
-  deletePost(id: any) {
-    this.blog_posts = this.blog_posts.filter((post) => post.id !== id);
-    this.countChange.emit(this.blog_posts.length);
+  protected deletePost(id: string) {
+    this.blogPosts = this.blogPosts.filter((post) => post.id !== id);
+    this.emitCount();
   }
 }
