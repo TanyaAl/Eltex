@@ -1,9 +1,15 @@
 @use '../../../../variables';
 
-.card-text h3 {
+.card-text {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.template-title {
   font-size: 24px;
   font-weight: 400;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 .template-content {
@@ -41,10 +47,6 @@
       font-weight: 700;
       line-height: 55px;
       margin-bottom: 16px;
-    }
-
-    .card-text {
-      min-width: 0;
     }
 
     .article-photo {
