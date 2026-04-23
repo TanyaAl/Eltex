@@ -7,5 +7,10 @@
       <time>{{ blogPost.date }}</time>
     </p>
   </div>
-  <div (click)="onDelete()" class="delete-btn"><img src="./delete.svg" alt="delete-icon" /></div>
+  <div class="post-btn-container">
+    <div (click)="onEdit()" class="post-btn cursor">
+      <img src="./edit.svg" alt="edit-icon" />
+    </div>
+    <div (click)="onDelete()" class="post-btn"><img src="./delete.svg" alt="delete-icon" /></div>
+  </div>
 </article>

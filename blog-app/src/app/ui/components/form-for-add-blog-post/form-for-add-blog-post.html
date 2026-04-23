@@ -7,7 +7,7 @@
       method="post"
       class="add-article-form"
     >
-      <h2>Добавить статью</h2>
+      <h2>{{ editingPost ? 'Изменить статью' : 'Добавить статью' }}</h2>
       <div>
         <label for="add-title" class="invisible">Заголовок</label>
         <input
@@ -17,14 +17,15 @@
           name="title"
           required
           placeholder="Заголовок"
+          [class.error-border]="title?.invalid && (title?.dirty || title?.touched)"
         />
         @if (title?.invalid && (title?.dirty || title?.touched)) {
           <div class="alert alert-danger">
             @if (title?.hasError('required')) {
-              <div>Title is required</div>
+              <div class="error">Title is required</div>
             }
             @if (title?.hasError('minlength')) {
-              <div>Title must be at least 25 characters long</div>
+              <div class="error">Title must be at least 25 characters long</div>
             }
           </div>
         }
@@ -37,11 +38,12 @@
           name="content"
           required
           placeholder="Текст статьи"
+          [class.error-border]="text?.invalid && (text?.dirty || text?.touched)"
         ></textarea>
         @if (text?.invalid && (text?.dirty || text?.touched)) {
           <div class="alert alert-danger">
             @if (text?.hasError('required')) {
-              <div>Text is required</div>
+              <div class="error text-error">Text is required</div>
             }
           </div>
         }
@@ -52,7 +54,7 @@
           type="submit"
           class="btn btn-submit btn-submit-add-article"
         >
-          Добавить
+          {{ editingPost ? 'Сохранить' : 'Добавить' }}
         </button>
         <button (click)="onCancel()" type="button" class="btn light-btn close-form-btn">
           Отмена

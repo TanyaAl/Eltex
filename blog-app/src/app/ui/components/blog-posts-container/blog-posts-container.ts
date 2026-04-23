@@ -17,6 +17,8 @@ export class BlogPostsContainer {
 
   @Output() countChange = new EventEmitter<number>();
 
+  @Output() edit = new EventEmitter<string>();
+
   private emitCount() {
     this.countChange.emit(this.blogPosts.length);
   }
@@ -34,5 +36,9 @@ export class BlogPostsContainer {
   protected deletePost(id: string) {
     this.blogPosts = this.blogPosts.filter((post) => post.id !== id);
     this.emitCount();
+  }
+
+  protected editPost(id: string) {
+    this.edit.emit(id);
   }
 }

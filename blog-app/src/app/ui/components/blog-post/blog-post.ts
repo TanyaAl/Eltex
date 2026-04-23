@@ -14,7 +14,13 @@ export class BlogPost {
 
   @Output() delete = new EventEmitter<string>();
 
+  @Output() edit = new EventEmitter<string>();
+
   protected onDelete() {
     this.delete.emit(this.blogPost.id);
+  }
+
+  protected onEdit() {
+    this.edit.emit(this.blogPost.id);
   }
 }
