@@ -18,7 +18,7 @@ export class StatCard {
     this.count = data.count;
   }
 
-  close() {
+  protected close() {
     this.dialogRef.close();
   }
 }

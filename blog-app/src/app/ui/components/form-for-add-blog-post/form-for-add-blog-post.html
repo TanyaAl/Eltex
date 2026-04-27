@@ -1,24 +1,62 @@
 @if (isOpen) {
   <section class="add-article">
-    <form action="add-text" method="post" class="add-article-form">
-      <h2>Добавить статью</h2>
+    <form
+      [formGroup]="blogPostForm"
+      (ngSubmit)="onSubmit()"
+      action="add-text"
+      method="post"
+      class="add-article-form"
+    >
+      <h2>{{ editingPost ? 'Изменить статью' : 'Добавить статью' }}</h2>
       <div>
-        <label for="title"></label>
-        <input type="text" id="added-title" name="title" required placeholder="Заголовок" />
+        <label for="add-title" class="invisible">Заголовок</label>
+        <input
+          formControlName="title"
+          type="text"
+          id="add-title"
+          name="title"
+          required
+          placeholder="Заголовок"
+          [class.error-border]="title?.invalid && (title?.dirty || title?.touched)"
+        />
+        @if (title?.invalid && (title?.dirty || title?.touched)) {
+          <div class="alert alert-danger">
+            @if (title?.hasError('required')) {
+              <div class="error">Title is required</div>
+            }
+            @if (title?.hasError('minlength')) {
+              <div class="error">Title must be at least 25 characters long</div>
+            }
+          </div>
+        }
       </div>
       <div>
-        <label for="content"></label>
+        <label for="add-content" class="invisible">Текст</label>
         <textarea
-          type="text"
-          id="added-content"
+          formControlName="text"
+          id="add-content"
           name="content"
           required
           placeholder="Текст статьи"
+          [class.error-border]="text?.invalid && (text?.dirty || text?.touched)"
         ></textarea>
+        @if (text?.invalid && (text?.dirty || text?.touched)) {
+          <div class="alert alert-danger">
+            @if (text?.hasError('required')) {
+              <div class="error text-error">Text is required</div>
+            }
+          </div>
+        }
       </div>
       <div class="btns-for-new-articles">
-        <button type="submit" class="btn btn-submit btn-submit-add-article">Добавить</button>
-        <button (click)="close.emit()" type="button" class="btn light-btn close-form-btn">
+        <button
+          [disabled]="!blogPostForm.valid"
+          type="submit"
+          class="btn btn-submit btn-submit-add-article"
+        >
+          {{ editingPost ? 'Сохранить' : 'Добавить' }}
+        </button>
+        <button (click)="onCancel()" type="button" class="btn light-btn close-form-btn">
           Отмена
         </button>
       </div>

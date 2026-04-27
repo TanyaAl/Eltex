@@ -1,9 +1,15 @@
 @use '../../../../variables';
 
-.card-text h3 {
+.card-text {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.template-title {
   font-size: 24px;
   font-weight: 400;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 .template-content {
@@ -15,15 +21,25 @@
   margin-bottom: 8px;
 }
 
-.delete-btn {
+.post-btn-container {
   position: absolute;
   top: 16px;
   right: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.post-btn {
   opacity: 0;
 
   &:hover {
     border: solid 1px var(--light-grey);
   }
+}
+
+.cursor:hover {
+  cursor: pointer;
 }
 
 :host {
@@ -43,13 +59,13 @@
       margin-bottom: 16px;
     }
 
-    .card-text {
-      min-width: 0;
-    }
-
     .article-photo {
       height: 453px;
       grid-column: span 2;
+    }
+
+    .post-btn {
+      background-color: var(--white);
     }
 
     .template-content {
@@ -64,6 +80,15 @@
 }
 
 @media screen and (width <= 800px) {
+  .article-photo {
+    height: auto;
+  }
+
+  .post-btn {
+    opacity: 1;
+    background-color: transparent;
+  }
+
   :host {
     grid-column: span 2;
     display: flex;
@@ -73,16 +98,8 @@
       display: flex;
       flex-direction: column;
 
-      .article-photo {
-        height: auto;
-      }
-
       .btn-more {
         grid-column: span 2;
-      }
-
-      .delete-btn {
-        opacity: 1;
       }
     }
   }

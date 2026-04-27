@@ -16,14 +16,14 @@ export class TipButtons {
 
   constructor(private dialog: Dialog) {}
 
-  open() {
+  protected openStat() {
     this.dialog.open(StatCard, {
       hasBackdrop: true,
       data: { count: this.postsCount },
     });
   }
 
-  openForm() {
+  protected openForm() {
     this.addPost.emit();
     setTimeout(() => {
       document.querySelector('.add-article')?.scrollIntoView({ behavior: 'smooth' });
