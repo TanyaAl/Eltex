@@ -7,10 +7,10 @@
       (edit)="onEdit($event)"
     ></app-blog-posts-container>
     <app-btn-or-link [count]="postsCount"></app-btn-or-link>
-    <app-tip-buttons [postsCount]="postsCount" (addPost)="isFormOpen = true"></app-tip-buttons>
+    <app-tip-buttons [postsCount]="postsCount"></app-tip-buttons>
     <app-form-for-add-blog-post
       [isOpen]="isFormOpen"
-      [editingPost]="editingPost"
+      [editingPost]="editingPost()"
       (close)="onCloseForm()"
       (save)="onSave($event)"
     ></app-form-for-add-blog-post>

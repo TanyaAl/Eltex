@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { Component, Output } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BlogPageTitle } from '../../components/blog-page-title/blog-page-title';
 import { BtnOrLink } from '../../components/btn-or-link/btn-or-link';
 import { BlogPostsContainer } from '../../components/blog-posts-container/blog-posts-container';
@@ -20,12 +20,12 @@ export class BlogPage {
 
   blogPosts: BlogPostType[] = [];
 
-  editingPost: BlogPostType | null = null;
+  editingPost = signal<BlogPostType | null>(null);
 
   protected onSave(value: { title: string; text: string }) {
-    if (this.editingPost) {
+    if (this.editingPost()) {
       this.blogPosts = this.blogPosts.map((postToEdit) =>
-        postToEdit.id === this.editingPost?.id ? { ...postToEdit, ...value } : postToEdit,
+        postToEdit.id === this.editingPost()?.id ? { ...postToEdit, ...value } : postToEdit,
       );
     } else {
       const todayDate = new Date()
@@ -46,13 +46,13 @@ export class BlogPage {
       };
       this.blogPosts = [...this.blogPosts, newPost];
     }
-    this.editingPost = null;
+    this.editingPost.set(null);
   }
 
   protected onEdit(id: string) {
     const post = this.blogPosts.find((p) => p.id === id);
     if (!post) return;
-    this.editingPost = post;
+    this.editingPost.set(post);
     this.isFormOpen = true;
     setTimeout(() => {
       document.querySelector('.add-article')?.scrollIntoView({ behavior: 'smooth' });
@@ -61,6 +61,6 @@ export class BlogPage {
 
   protected onCloseForm() {
     this.isFormOpen = false;
-    this.editingPost = null;
+    this.editingPost.set(null);
   }
 }

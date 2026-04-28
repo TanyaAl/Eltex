@@ -1,6 +1,7 @@
+/* eslint-disable dot-notation */
 /* eslint-disable no-useless-return */
 /* eslint-disable import/prefer-default-export */
-import { Component, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, input, SimpleChanges, output, computed } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BlogPostType } from '../../../types/BlogPostType';
 
@@ -11,17 +12,59 @@ import { BlogPostType } from '../../../types/BlogPostType';
   styleUrl: './form-for-add-blog-post.scss',
 })
 export class FormForAddBlogPost {
-  @Input() isOpen = false;
+  isOpen = input<boolean>();
 
-  @Input() editingPost: BlogPostType | null = null;
+  editingPost = input<BlogPostType | null>();
 
-  @Output() close = new EventEmitter<void>();
+  close = output<void>();
 
-  @Output() save = new EventEmitter<any>();
+  save = output<{ title: string; text: string }>();
+
+  protected formTitle = computed(() =>
+    this.editingPost() ? 'Изменить статью' : 'Добавить статью',
+  );
+
+  protected saveBtnTitle = computed(() => (this.editingPost() ? 'Сохранить' : 'Добавить'));
+
+  protected hasError(controlName: string): boolean {
+    const control = this.blogPostForm.get(controlName);
+    const isInvalid = control?.invalid && control.touched;
+    return Boolean(isInvalid);
+  }
+
+  private getErrorStr(errorCode: string, errorData: any) {
+    switch (errorCode) {
+      case 'required':
+        return 'Поле должно быть заполнено';
+
+      case 'minlength':
+        const { requiredLength, actualLength } = errorData;
+        return `Нужно еще ${requiredLength - actualLength} символов`;
+
+      default:
+        return 'Ошибка при заполнении поля';
+    }
+  }
+
+  protected getControlErrors(controlName: string): string[] {
+    const control = this.blogPostForm.get(controlName);
+    const errors: Record<string, unknown> | null = control?.errors ?? null;
+    if (errors) {
+      const errorTextArray: string[] = [];
+      Object.entries(errors).forEach(([errorKey, errorValue]) => {
+        errorTextArray.push(this.getErrorStr(errorKey, errorValue));
+      });
+      return errorTextArray;
+    }
+    return [];
+  }
 
   protected blogPostForm = new FormGroup({
-    title: new FormControl('', [Validators.required, Validators.minLength(25)]),
-    text: new FormControl('', Validators.required),
+    title: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(25)],
+    }),
+    text: new FormControl('', { nonNullable: true, validators: Validators.required }),
   });
 
   get title() {
@@ -34,7 +77,7 @@ export class FormForAddBlogPost {
 
   protected onSubmit() {
     if (this.blogPostForm.invalid) return;
-    this.save.emit(this.blogPostForm.value);
+    this.save.emit(this.blogPostForm.getRawValue());
     this.blogPostForm.reset();
   }
 
@@ -43,11 +86,12 @@ export class FormForAddBlogPost {
     this.close.emit();
   }
 
-  ngOnChanges() {
-    if (this.editingPost) {
+  ngOnChanges(changes: SimpleChanges) {
+    const post = changes['editingPost']?.currentValue;
+    if (post) {
       this.blogPostForm.patchValue({
-        title: this.editingPost.title,
-        text: this.editingPost.text,
+        title: post.title,
+        text: post.text,
       });
     }
   }
