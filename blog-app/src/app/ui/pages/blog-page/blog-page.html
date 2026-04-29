@@ -2,14 +2,14 @@
   <section class="main-content">
     <app-blog-page-title></app-blog-page-title>
     <app-blog-posts-container
-      (countChange)="postsCount = $event"
-      [blogPosts]="blogPosts"
+      [blogPosts]="blogPosts()"
       (edit)="onEdit($event)"
+      (delete)="onDelete($event)"
     ></app-blog-posts-container>
-    <app-btn-or-link [count]="postsCount"></app-btn-or-link>
-    <app-tip-buttons [postsCount]="postsCount"></app-tip-buttons>
+    <app-btn-or-link [postsCount]="postsCount()"></app-btn-or-link>
+    <app-tip-buttons [postsCount]="postsCount()" (addPost)="onOpenform()"></app-tip-buttons>
     <app-form-for-add-blog-post
-      [isOpen]="isFormOpen"
+      [isOpen]="isFormOpen()"
       [editingPost]="editingPost()"
       (close)="onCloseForm()"
       (save)="onSave($event)"

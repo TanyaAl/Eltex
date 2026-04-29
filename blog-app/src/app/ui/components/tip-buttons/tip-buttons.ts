@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
 import { StatCard } from '../stat-card/stat-card';
 
@@ -10,16 +10,16 @@ import { StatCard } from '../stat-card/stat-card';
   styleUrl: './tip-buttons.scss',
 })
 export class TipButtons {
-  @Input() postsCount: number = 0;
+  addPost = output<void>();
 
-  @Output() addPost = new EventEmitter<void>();
+  postsCount = input<number>(0);
 
   constructor(private dialog: Dialog) {}
 
   protected openStat() {
     this.dialog.open(StatCard, {
       hasBackdrop: true,
-      data: { count: this.postsCount },
+      data: { count: this.postsCount() },
     });
   }
 

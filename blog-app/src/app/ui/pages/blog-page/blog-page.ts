@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { Component, signal } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { BlogPageTitle } from '../../components/blog-page-title/blog-page-title';
 import { BtnOrLink } from '../../components/btn-or-link/btn-or-link';
 import { BlogPostsContainer } from '../../components/blog-posts-container/blog-posts-container';
@@ -14,18 +14,18 @@ import { BlogPostType } from '../../../types/BlogPostType';
   styleUrl: './blog-page.scss',
 })
 export class BlogPage {
-  postsCount = 0;
+  isFormOpen = signal(false);
 
-  isFormOpen = false;
-
-  blogPosts: BlogPostType[] = [];
+  blogPosts = signal<BlogPostType[]>([]);
 
   editingPost = signal<BlogPostType | null>(null);
 
+  postsCount = computed(() => this.blogPosts().length);
+
   protected onSave(value: { title: string; text: string }) {
     if (this.editingPost()) {
-      this.blogPosts = this.blogPosts.map((postToEdit) =>
-        postToEdit.id === this.editingPost()?.id ? { ...postToEdit, ...value } : postToEdit,
+      this.blogPosts.update((posts) =>
+        posts.map((post) => (post.id === this.editingPost()?.id ? { ...post, ...value } : post)),
       );
     } else {
       const todayDate = new Date()
@@ -44,23 +44,33 @@ export class BlogPage {
         text: value.text,
         date: todayDate,
       };
-      this.blogPosts = [...this.blogPosts, newPost];
+      this.blogPosts.update((posts) => [...posts, newPost]);
     }
     this.editingPost.set(null);
   }
 
+  protected onOpenform() {
+    this.isFormOpen.set(true);
+  }
+
   protected onEdit(id: string) {
-    const post = this.blogPosts.find((p) => p.id === id);
+    const post = this.blogPosts().find((p) => p.id === id);
     if (!post) return;
     this.editingPost.set(post);
-    this.isFormOpen = true;
+    this.onOpenform();
     setTimeout(() => {
       document.querySelector('.add-article')?.scrollIntoView({ behavior: 'smooth' });
     });
   }
 
+  protected onDelete(id: string) {
+    if (this.editingPost()?.id === id) return;
+    console.log(id);
+    this.blogPosts.update((posts) => posts.filter((post) => post.id !== id));
+  }
+
   protected onCloseForm() {
-    this.isFormOpen = false;
+    this.isFormOpen.set(false);
     this.editingPost.set(null);
   }
 }

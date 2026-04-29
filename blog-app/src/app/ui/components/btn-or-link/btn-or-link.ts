@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-btn-or-link',
@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './btn-or-link.scss',
 })
 export class BtnOrLink {
-  @Input() count!: number;
+  postsCount = input<number>(0);
 }

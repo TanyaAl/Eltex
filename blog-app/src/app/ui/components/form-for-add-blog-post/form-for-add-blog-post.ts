@@ -12,7 +12,7 @@ import { BlogPostType } from '../../../types/BlogPostType';
   styleUrl: './form-for-add-blog-post.scss',
 })
 export class FormForAddBlogPost {
-  isOpen = input<boolean>();
+  isOpen = input<boolean>(false);
 
   editingPost = input<BlogPostType | null>();
 
