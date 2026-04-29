@@ -1,11 +1,13 @@
 /* eslint-disable import/prefer-default-export */
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { BlogPageTitle } from '../../components/blog-page-title/blog-page-title';
 import { BtnOrLink } from '../../components/btn-or-link/btn-or-link';
 import { BlogPostsContainer } from '../../components/blog-posts-container/blog-posts-container';
 import { TipButtons } from '../../components/tip-buttons/tip-buttons';
 import { FormForAddBlogPost } from '../../components/form-for-add-blog-post/form-for-add-blog-post';
 import { BlogPostType } from '../../../types/BlogPostType';
+import { PostsStoreService } from '../../../services/posts/posts-store.service';
+import { POSTS_SERVICE } from '../../../services/posts/posts-service.token';
 
 @Component({
   selector: 'app-blog-page',
@@ -16,35 +18,24 @@ import { BlogPostType } from '../../../types/BlogPostType';
 export class BlogPage {
   isFormOpen = signal(false);
 
-  blogPosts = signal<BlogPostType[]>([]);
-
   editingPost = signal<BlogPostType | null>(null);
 
   postsCount = computed(() => this.blogPosts().length);
 
-  protected onSave(value: { title: string; text: string }) {
-    if (this.editingPost()) {
-      this.blogPosts.update((posts) =>
-        posts.map((post) => (post.id === this.editingPost()?.id ? { ...post, ...value } : post)),
-      );
-    } else {
-      const todayDate = new Date()
-        .toLocaleDateString('ru-RU', {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric',
-        })
-        .replace('г', '')
-        .replace('.', '');
+  private postsService = inject(POSTS_SERVICE);
+  private store = inject(PostsStoreService);
+  blogPosts = this.store.postsList;
 
-      const newPost: BlogPostType = {
-        id: crypto.randomUUID(),
-        category: 'general',
-        title: value.title,
-        text: value.text,
-        date: todayDate,
-      };
-      this.blogPosts.update((posts) => [...posts, newPost]);
+  ngOnInit() {
+    this.postsService.loadPosts().subscribe();
+  }
+
+  protected onSave(value: { title: string; text: string }) {
+    const editPost = this.editingPost();
+    if (editPost) {
+      this.postsService.updatePost({ ...editPost, ...value }).subscribe();
+    } else {
+      this.postsService.addPost(value).subscribe();
     }
     this.editingPost.set(null);
   }
@@ -54,19 +45,19 @@ export class BlogPage {
   }
 
   protected onEdit(id: string) {
-    const post = this.blogPosts().find((p) => p.id === id);
-    if (!post) return;
-    this.editingPost.set(post);
-    this.onOpenform();
-    setTimeout(() => {
-      document.querySelector('.add-article')?.scrollIntoView({ behavior: 'smooth' });
+    this.postsService.getPostById(id).subscribe((postToEdit) => {
+      if (!postToEdit) return;
+      this.editingPost.set(postToEdit);
+      this.onOpenform();
+      setTimeout(() => {
+        document.querySelector('.add-article')?.scrollIntoView({ behavior: 'smooth' });
+      });
     });
   }
 
   protected onDelete(id: string) {
     if (this.editingPost()?.id === id) return;
-    console.log(id);
-    this.blogPosts.update((posts) => posts.filter((post) => post.id !== id));
+    this.postsService.deletePost(id).subscribe();
   }
 
   protected onCloseForm() {

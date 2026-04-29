@@ -1,6 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 import { Component, input, output } from '@angular/core';
-import { ConnectableObservable } from 'rxjs';
 import { BlogPostType } from '../../../types/BlogPostType';
 
 @Component({
