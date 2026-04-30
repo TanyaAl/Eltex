@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { BlogPostType } from '../../../types/BlogPostType';
 
 @Component({
   selector: 'app-last-article',
@@ -7,10 +8,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './last-article.scss',
 })
 export class LastArticle {
-  @Input() article!: {
-    id: number;
-    category: string;
-    title: string;
-    text: string;
-  };
+  article = input.required<BlogPostType>();
 }

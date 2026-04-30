@@ -1,5 +1,9 @@
 @use '../../../../variables';
 
+.category {
+  margin-bottom: 8px;
+}
+
 :host {
   &:nth-child(odd) .card {
     background-color: var(--light-beige);
@@ -18,17 +22,11 @@
   }
 }
 
-.category {
-  margin-bottom: 8px;
-}
-
 .main-page-item {
   display: flex;
   flex-flow: row wrap-reverse;
   align-items: center;
-  justify-content: center;
   gap: 50px;
-  background: var(--light-beige); //временное решение//
 }
 
 .main-page-article h3 {
@@ -40,6 +38,16 @@
   padding-left: 41px;
   padding-top: 63px;
   flex: 1;
+  overflow-wrap: anywhere;
+  margin-bottom: 16px;
+}
+
+.template-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 16px;
 }
 
 .main-page-article {

@@ -18,7 +18,9 @@ export class FormForAddBlogPost {
 
   close = output<void>();
 
-  save = output<{ title: string; text: string }>();
+  save = output<{ category: string; title: string; text: string }>();
+
+  categories = ['Дизайн', 'Разработка'];
 
   protected formTitle = computed(() =>
     this.editingPost() ? 'Изменить статью' : 'Добавить статью',
@@ -60,12 +62,17 @@ export class FormForAddBlogPost {
   }
 
   protected blogPostForm = new FormGroup({
+    category: new FormControl('Разработка', { nonNullable: true, validators: Validators.required }),
     title: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(25)],
     }),
     text: new FormControl('', { nonNullable: true, validators: Validators.required }),
   });
+
+  get category() {
+    return this.blogPostForm.get('category');
+  }
 
   get title() {
     return this.blogPostForm.get('title');
@@ -90,6 +97,7 @@ export class FormForAddBlogPost {
     const post = changes['editingPost']?.currentValue;
     if (post) {
       this.blogPostForm.patchValue({
+        category: post.category,
         title: post.title,
         text: post.text,
       });

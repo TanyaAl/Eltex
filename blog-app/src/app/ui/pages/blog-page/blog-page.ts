@@ -41,18 +41,17 @@ export class BlogPage {
   }
 
   ngOnInit() {
-    this.postsService.loadPosts().subscribe(() => this.loadPage());
+    this.loadPage();
   }
 
-  protected onSave(value: { title: string; text: string }) {
+  protected onSave(value: { category: string; title: string; text: string }) {
     const editPost = this.editingPost();
     if (editPost) {
-      this.postsService.updatePost({ ...editPost, ...value }).subscribe();
+      this.postsService.updatePost({ ...editPost, ...value }).subscribe(() => this.loadPage());
     } else {
-      this.postsService.addPost(value).subscribe();
+      this.postsService.addPost(value).subscribe(() => this.loadPage());
     }
     this.editingPost.set(null);
-    this.loadPage();
   }
 
   protected onOpenform() {
@@ -68,13 +67,11 @@ export class BlogPage {
         document.querySelector('.add-article')?.scrollIntoView({ behavior: 'smooth' });
       });
     });
-    this.loadPage();
   }
 
   protected onDelete(id: string) {
     if (this.editingPost()?.id === id) return;
-    this.postsService.deletePost(id).subscribe();
-    this.loadPage();
+    this.postsService.deletePost(id).subscribe(() => this.loadPage());
   }
 
   protected onCloseForm() {

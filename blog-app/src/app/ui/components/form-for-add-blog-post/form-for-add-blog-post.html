@@ -9,6 +9,19 @@
     >
       <h2>{{ formTitle() }}</h2>
       @let isTitleStrInvalid = hasError('title');
+      @let isCategoryInvalid = hasError('category');
+      <label for="category">Выберите рубрику: </label>
+      <select id="category" formControlName="category" class="select">
+        <option value="" disabled></option>
+        @for (cat of categories; track cat) {
+          <option [value]="cat">{{ cat }}</option>
+        }
+      </select>
+      @if (isCategoryInvalid) {
+        @for (errorMsg of getControlErrors('title'); track $index) {
+          <div class="error">{{ errorMsg }}</div>
+        }
+      }
       <label for="add-title" class="invisible">Заголовок</label>
       <input
         formControlName="title"

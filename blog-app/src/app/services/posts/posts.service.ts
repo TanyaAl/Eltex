@@ -19,7 +19,7 @@ export class PostsService implements PostsServiceInterface {
     return of(posts);
   }
 
-  addPost(post: { title: string; text: string }): Observable<BlogPostType[]> {
+  addPost(post: { category: string; title: string; text: string }): Observable<BlogPostType[]> {
     const todayDate = new Date()
       .toLocaleDateString('ru-RU', {
         day: 'numeric',
@@ -31,7 +31,7 @@ export class PostsService implements PostsServiceInterface {
 
     const newPost: BlogPostType = {
       id: crypto.randomUUID(),
-      category: 'general',
+      category: post.category,
       title: post.title,
       text: post.text,
       date: todayDate,
