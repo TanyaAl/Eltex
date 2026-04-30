@@ -1,11 +1,16 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
+import { PaginationBtns } from '../pagination-btns/pagination-btns';
+import { PostsStoreService } from '../../../services/posts/posts-store.service';
 
 @Component({
   selector: 'app-btn-or-link',
-  imports: [],
+  imports: [PaginationBtns],
   templateUrl: './btn-or-link.html',
   styleUrl: './btn-or-link.scss',
 })
 export class BtnOrLink {
-  postsCount = input<number>(0);
+  private store = inject(PostsStoreService);
+  postsCount = computed(() => this.store.postsList().length);
+  currentPage = this.store.currentPage();
+  pageSize = this.store.pageSize();
 }

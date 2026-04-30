@@ -20,14 +20,28 @@ export class BlogPage {
 
   editingPost = signal<BlogPostType | null>(null);
 
-  postsCount = computed(() => this.blogPosts().length);
+  paginatedPosts = signal<BlogPostType[]>([]);
 
   private postsService = inject(POSTS_SERVICE);
   private store = inject(PostsStoreService);
+
   blogPosts = this.store.postsList;
+  postsCount = computed(() => this.store.postsList().length);
+  pageSize = this.store.pageSize;
+
+  private loadPage() {
+    this.postsService
+      .getPostsByPage(this.store.currentPage(), this.pageSize())
+      .subscribe((posts) => this.paginatedPosts.set(posts));
+  }
+
+  protected setPage(page: number) {
+    this.store.setCurrentPage(page);
+    this.loadPage();
+  }
 
   ngOnInit() {
-    this.postsService.loadPosts().subscribe();
+    this.postsService.loadPosts().subscribe(() => this.loadPage());
   }
 
   protected onSave(value: { title: string; text: string }) {
@@ -38,6 +52,7 @@ export class BlogPage {
       this.postsService.addPost(value).subscribe();
     }
     this.editingPost.set(null);
+    this.loadPage();
   }
 
   protected onOpenform() {
@@ -53,11 +68,13 @@ export class BlogPage {
         document.querySelector('.add-article')?.scrollIntoView({ behavior: 'smooth' });
       });
     });
+    this.loadPage();
   }
 
   protected onDelete(id: string) {
     if (this.editingPost()?.id === id) return;
     this.postsService.deletePost(id).subscribe();
+    this.loadPage();
   }
 
   protected onCloseForm() {

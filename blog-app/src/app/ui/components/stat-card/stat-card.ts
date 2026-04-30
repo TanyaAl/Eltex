@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
-import { Component, Inject } from '@angular/core';
-import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+import { Component, inject, computed, Inject } from '@angular/core';
+import { DialogRef } from '@angular/cdk/dialog';
+import { PostsStoreService } from '../../../services/posts/posts-store.service';
 
 @Component({
   selector: 'app-stat-card',
@@ -9,13 +10,11 @@ import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
   styleUrl: './stat-card.scss',
 })
 export class StatCard {
-  count: number;
+  private store = inject(PostsStoreService);
+  postsCount = computed(() => this.store.postsList().length);
 
-  constructor(
-    private dialogRef: DialogRef,
-    @Inject(DIALOG_DATA) public data: { count: number },
-  ) {
-    this.count = data.count;
+  constructor(private dialogRef: DialogRef) {
+    console.log(this.store.postsList);
   }
 
   protected close() {

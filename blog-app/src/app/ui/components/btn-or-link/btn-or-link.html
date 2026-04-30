@@ -1,6 +1,10 @@
 <div class="btn-or-link-container">
   @if (postsCount() > 0) {
-    <button type="button" class="btn light-btn btn-more btn-all-posts">Дальше</button>
+    <app-pagination-btns
+      [totalPosts]="postsCount()"
+      [pageSize]="pageSize"
+      [currentPage]="currentPage"
+    ></app-pagination-btns>
   } @else {
     <p class="string">Нет статей</p>
   }

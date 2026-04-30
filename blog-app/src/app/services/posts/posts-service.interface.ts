@@ -7,4 +7,6 @@ export interface PostsServiceInterface {
   deletePost(id: string): Observable<BlogPostType[]>;
   getPostById(id: string): Observable<BlogPostType | undefined>;
   updatePost(post: BlogPostType): Observable<BlogPostType[]>;
+  getPostsByPage(page: number, pageSize: number): Observable<BlogPostType[]>;
+  getTotalPostsCount(): Observable<number>;
 }

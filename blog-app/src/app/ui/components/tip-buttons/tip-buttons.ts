@@ -12,14 +12,11 @@ import { StatCard } from '../stat-card/stat-card';
 export class TipButtons {
   addPost = output<void>();
 
-  postsCount = input<number>(0);
-
   constructor(private dialog: Dialog) {}
 
   protected openStat() {
     this.dialog.open(StatCard, {
       hasBackdrop: true,
-      data: { count: this.postsCount() },
     });
   }
 

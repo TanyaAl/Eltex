@@ -2,12 +2,12 @@
   <section class="main-content">
     <app-blog-page-title></app-blog-page-title>
     <app-blog-posts-container
-      [blogPosts]="blogPosts()"
+      [blogPosts]="paginatedPosts()"
       (edit)="onEdit($event)"
       (delete)="onDelete($event)"
     ></app-blog-posts-container>
-    <app-btn-or-link [postsCount]="postsCount()"></app-btn-or-link>
-    <app-tip-buttons [postsCount]="postsCount()" (addPost)="onOpenform()"></app-tip-buttons>
+    <app-btn-or-link></app-btn-or-link>
+    <app-tip-buttons (addPost)="onOpenform()"></app-tip-buttons>
     <app-form-for-add-blog-post
       [isOpen]="isFormOpen()"
       [editingPost]="editingPost()"
