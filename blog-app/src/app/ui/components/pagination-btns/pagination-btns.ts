@@ -11,7 +11,7 @@ export class PaginationBtns {
   totalPosts = input.required<number>();
   pageSize = input.required<number>();
 
-  changedPage = output<number>();
+  pageChange = output<number>();
 
   totalPages = computed(() => {
     return Math.ceil(this.totalPosts() / this.pageSize());
@@ -20,6 +20,6 @@ export class PaginationBtns {
   pagesArray = computed(() => Array.from({ length: this.totalPages() }, (_, i) => i + 1));
 
   setPage(page: number) {
-    this.changedPage.emit(page);
+    this.pageChange.emit(page);
   }
 }

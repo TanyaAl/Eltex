@@ -56,10 +56,8 @@ export class PostsService implements PostsServiceInterface {
     return of(updated);
   }
 
-  getPostById(id: string): Observable<BlogPostType | undefined> {
-    const post = this.store.postsList().find((p) => p.id === id);
-
-    return of(post);
+  getPostById(id: string): BlogPostType | undefined {
+    return this.store.postsList().find((p) => p.id === id);
   }
 
   deletePost(id: string): Observable<BlogPostType[]> {
@@ -73,15 +71,15 @@ export class PostsService implements PostsServiceInterface {
     return of(updated);
   }
 
-  getPostsByPage(page: number, pageSize: number): Observable<BlogPostType[]> {
+  getPostsByPage(page: number, pageSize: number): BlogPostType[] {
     const all = this.store.postsList();
     const start = (page - 1) * pageSize;
     const end = start + pageSize;
 
-    return of(all.slice(start, end));
+    return all.slice(start, end);
   }
 
-  getTotalPostsCount(): Observable<number> {
-    return of(this.store.postsList().length);
+  getTotalPostsCount(): number {
+    return this.store.postsList().length;
   }
 }

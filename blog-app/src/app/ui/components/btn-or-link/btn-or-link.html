@@ -2,8 +2,9 @@
   @if (postsCount() > 0) {
     <app-pagination-btns
       [totalPosts]="postsCount()"
-      [pageSize]="pageSize"
-      [currentPage]="currentPage"
+      [pageSize]="pageSize()"
+      [currentPage]="currentPage()"
+      (pageChange)="setPage($event)"
     ></app-pagination-btns>
   } @else {
     <p class="string">Нет статей</p>

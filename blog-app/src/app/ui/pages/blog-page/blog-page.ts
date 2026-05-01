@@ -30,9 +30,9 @@ export class BlogPage {
   pageSize = this.store.pageSize;
 
   private loadPage() {
-    this.postsService
-      .getPostsByPage(this.store.currentPage(), this.pageSize())
-      .subscribe((posts) => this.paginatedPosts.set(posts));
+    const posts = this.postsService.getPostsByPage(this.store.currentPage(), this.pageSize());
+    // .subscribe((posts) =>
+    this.paginatedPosts.set(posts);
   }
 
   protected setPage(page: number) {
@@ -59,13 +59,12 @@ export class BlogPage {
   }
 
   protected onEdit(id: string) {
-    this.postsService.getPostById(id).subscribe((postToEdit) => {
-      if (!postToEdit) return;
-      this.editingPost.set(postToEdit);
-      this.onOpenform();
-      setTimeout(() => {
-        document.querySelector('.add-article')?.scrollIntoView({ behavior: 'smooth' });
-      });
+    const postToEdit = this.postsService.getPostById(id);
+    if (!postToEdit) return;
+    this.editingPost.set(postToEdit);
+    this.onOpenform();
+    setTimeout(() => {
+      document.querySelector('.add-article')?.scrollIntoView({ behavior: 'smooth' });
     });
   }
 

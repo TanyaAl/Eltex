@@ -1,3 +1,5 @@
+@use '../../../../variables';
+
 .pagination-btns {
   grid-column: 1 / -1;
   display: flex;
@@ -11,4 +13,8 @@
   width: 40px;
   font-size: 24px;
   border-radius: 5px;
+
+  &:focus {
+    background-color: var(--light-beige);
+  }
 }

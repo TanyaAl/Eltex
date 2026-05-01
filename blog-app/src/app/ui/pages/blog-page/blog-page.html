@@ -6,7 +6,7 @@
       (edit)="onEdit($event)"
       (delete)="onDelete($event)"
     ></app-blog-posts-container>
-    <app-btn-or-link></app-btn-or-link>
+    <app-btn-or-link (pageChange)="setPage($event)"></app-btn-or-link>
     <app-tip-buttons (addPost)="onOpenform()"></app-tip-buttons>
     <app-form-for-add-blog-post
       [isOpen]="isFormOpen()"
