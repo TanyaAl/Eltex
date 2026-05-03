@@ -1,8 +1,11 @@
 <article class="main-page-article main-page-item card">
   <div class="main-page-article-text">
-    <p class="p16 category">{{ article.category }}</p>
-    <h3>{{ article.title }}</h3>
-    <p class="p16">{{ article.text }}</p>
+    <p class="p16 category">{{ article().category }}</p>
+    <h3>{{ article().title }}</h3>
+    <p class="p16 template-text">{{ article().text }}</p>
+    <p class="p16 template-time">
+      <time>{{ article().date }}</time>
+    </p>
   </div>
   <div class="main-page-article-img">
     <img src="./template.webp" alt="article-img" />

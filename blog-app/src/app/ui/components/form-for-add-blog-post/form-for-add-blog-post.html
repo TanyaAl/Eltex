@@ -1,4 +1,4 @@
-@if (isOpen) {
+@if (isOpen()) {
   <section class="add-article">
     <form
       [formGroup]="blogPostForm"
@@ -7,30 +7,38 @@
       method="post"
       class="add-article-form"
     >
-      <h2>{{ editingPost ? 'Изменить статью' : 'Добавить статью' }}</h2>
-      <div>
-        <label for="add-title" class="invisible">Заголовок</label>
-        <input
-          formControlName="title"
-          type="text"
-          id="add-title"
-          name="title"
-          required
-          placeholder="Заголовок"
-          [class.error-border]="title?.invalid && (title?.dirty || title?.touched)"
-        />
-        @if (title?.invalid && (title?.dirty || title?.touched)) {
-          <div class="alert alert-danger">
-            @if (title?.hasError('required')) {
-              <div class="error">Title is required</div>
-            }
-            @if (title?.hasError('minlength')) {
-              <div class="error">Title must be at least 25 characters long</div>
-            }
-          </div>
+      <h2>{{ formTitle() }}</h2>
+      @let isTitleStrInvalid = hasError('title');
+      @let isCategoryInvalid = hasError('category');
+      <label for="category">Выберите рубрику: </label>
+      <select id="category" formControlName="category" class="select">
+        <option value="" disabled></option>
+        @for (cat of categories; track cat) {
+          <option [value]="cat">{{ cat }}</option>
         }
-      </div>
+      </select>
+      @if (isCategoryInvalid) {
+        @for (errorMsg of getControlErrors('title'); track $index) {
+          <div class="error">{{ errorMsg }}</div>
+        }
+      }
+      <label for="add-title" class="invisible">Заголовок</label>
+      <input
+        formControlName="title"
+        type="text"
+        id="add-title"
+        name="title"
+        required
+        placeholder="Заголовок"
+        [class.error-border]="isTitleStrInvalid"
+      />
+      @if (isTitleStrInvalid) {
+        @for (errorMsg of getControlErrors('title'); track $index) {
+          <div class="error">{{ errorMsg }}</div>
+        }
+      }
       <div>
+        @let isTextStrInvalid = hasError('text');
         <label for="add-content" class="invisible">Текст</label>
         <textarea
           formControlName="text"
@@ -38,14 +46,12 @@
           name="content"
           required
           placeholder="Текст статьи"
-          [class.error-border]="text?.invalid && (text?.dirty || text?.touched)"
+          [class.error-border]="isTextStrInvalid"
         ></textarea>
-        @if (text?.invalid && (text?.dirty || text?.touched)) {
-          <div class="alert alert-danger">
-            @if (text?.hasError('required')) {
-              <div class="error text-error">Text is required</div>
-            }
-          </div>
+        @if (isTextStrInvalid) {
+          @for (errorMsg of getControlErrors('text'); track $index) {
+            <div class="error text-error">{{ errorMsg }}</div>
+          }
         }
       </div>
       <div class="btns-for-new-articles">
@@ -54,7 +60,7 @@
           type="submit"
           class="btn btn-submit btn-submit-add-article"
         >
-          {{ editingPost ? 'Сохранить' : 'Добавить' }}
+          {{ saveBtnTitle() }}
         </button>
         <button (click)="onCancel()" type="button" class="btn light-btn close-form-btn">
           Отмена

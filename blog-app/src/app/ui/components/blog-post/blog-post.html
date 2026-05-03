@@ -1,10 +1,11 @@
 <article class="card" data-id="">
   <div class="article-photo"><img src="./template.webp" alt="article-img" /></div>
   <div class="card-text">
-    <h3 class="mb-21 template-title">{{ blogPost.title }}</h3>
-    <p class="template-content">{{ blogPost.text }}</p>
+    <p class="p16 category">{{ blogPost().category }}</p>
+    <h3 class="mb-21 template-title">{{ blogPost().title }}</h3>
+    <p class="template-content">{{ blogPost().text }}</p>
     <p class="p16 template-time">
-      <time>{{ blogPost.date }}</time>
+      <time>{{ blogPost().date }}</time>
     </p>
   </div>
   <div class="post-btn-container">

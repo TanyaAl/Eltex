@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { BlogPostType } from '../../../types/BlogPostType';
 
 @Component({
@@ -10,17 +10,18 @@ import { BlogPostType } from '../../../types/BlogPostType';
   styleUrl: './blog-post.scss',
 })
 export class BlogPost {
-  @Input() blogPost!: BlogPostType;
+  blogPost = input.required<BlogPostType>();
 
-  @Output() delete = new EventEmitter<string>();
+  delete = output<string>();
 
-  @Output() edit = new EventEmitter<string>();
+  edit = output<string>();
 
   protected onDelete() {
-    this.delete.emit(this.blogPost.id);
+    console.log('ONDELETE');
+    this.delete.emit(this.blogPost().id);
   }
 
   protected onEdit() {
-    this.edit.emit(this.blogPost.id);
+    this.edit.emit(this.blogPost().id);
   }
 }

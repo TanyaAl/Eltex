@@ -1,0 +1,11 @@
+<div class="pagination-btns">
+  @for (page of pagesArray(); track page) {
+    <button
+      class="pagination-btn light-btn"
+      [class.active]="page === currentPage()"
+      (click)="setPage(page)"
+    >
+      {{ page }}
+    </button>
+  }
+</div>

@@ -1,5 +1,5 @@
 <div class="articles-grid">
-  @for (blogPost of blogPosts; track blogPost.id) {
+  @for (blogPost of blogPosts(); track blogPost.id) {
     <app-blog-post
       [blogPost]="blogPost"
       (delete)="deletePost($event)"

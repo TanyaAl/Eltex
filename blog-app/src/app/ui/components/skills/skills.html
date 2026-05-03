@@ -1,13 +1,8 @@
 <section id="skills" class="skills">
   <h2>Навыки:</h2>
   <ul class="skills-grid">
-    <li class="skill">JS/TS/Node.js</li>
-    <li class="skill">HTML5/CSS3</li>
-    <li class="skill">React/Vue.js</li>
-    <li class="skill">Figma</li>
-    <li class="skill">VSCode</li>
-    <li class="skill">Webpack/Docker</li>
-    <li class="skill">Agile/Scrum</li>
-    <li class="skill">Test-Driven Development</li>
+    @for (item of skills; track item) {
+      <li class="skill">{{ item.skill }}</li>
+    }
   </ul>
 </section>

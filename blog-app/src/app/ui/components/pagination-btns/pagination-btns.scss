@@ -1,0 +1,20 @@
+@use '../../../../variables';
+
+.pagination-btns {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pagination-btn {
+  height: 40px;
+  width: 40px;
+  font-size: 24px;
+  border-radius: 5px;
+
+  &:focus {
+    background-color: var(--light-beige);
+  }
+}

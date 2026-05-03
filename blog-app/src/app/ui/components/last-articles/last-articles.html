@@ -1,6 +1,11 @@
 <section class="last-articles">
-  @for (article of articles; track article) {
+  @for (article of lastPosts(); track article) {
     <app-last-article [article]="article"></app-last-article>
   }
-  <a routerLink="/blog" class="btn btn-all-posts light-btn">Посмотреть все статьи</a>
+
+  @if (lastPosts().length > 0) {
+    <a routerLink="/blog" class="btn btn-all-posts light-btn">Посмотреть все статьи</a>
+  } @else {
+    <p class="string">Пока нет статей</p>
+  }
 </section>
