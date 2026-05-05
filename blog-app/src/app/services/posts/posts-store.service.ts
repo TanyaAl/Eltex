@@ -24,4 +24,8 @@ export class PostsStoreService {
   setTotalCount(count: number): void {
     this.totalCount.set(count);
   }
+
+  clearEditingPost(): void {
+    this.editingPost.set(null);
+  }
 }

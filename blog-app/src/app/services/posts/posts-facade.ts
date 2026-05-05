@@ -57,4 +57,8 @@ export class PostsFacade {
     this.store.setCurrentPage(page);
     this.loadPosts(page, this.pageSize());
   }
+
+  clearEditingPost(): void {
+    this.store.clearEditingPost();
+  }
 }

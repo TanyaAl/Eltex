@@ -22,6 +22,7 @@ export class BlogPage {
   paginatedPosts = this.facade.postsList;
   pageSize = this.facade.pageSize;
   currentPage = this.facade.currentPage;
+
   editingPost = this.facade.editingPost;
 
   private loadPage() {
@@ -44,7 +45,7 @@ export class BlogPage {
     } else {
       this.facade.addPost(value);
     }
-    this.editingPost.set(null);
+    this.facade.clearEditingPost();
   }
 
   protected onOpenform() {
@@ -67,6 +68,6 @@ export class BlogPage {
 
   protected onCloseForm() {
     this.isFormOpen.set(false);
-    this.editingPost.set(null);
+    this.facade.clearEditingPost();
   }
 }
