@@ -1,6 +1,3 @@
-/* eslint-disable dot-notation */
-/* eslint-disable no-useless-return */
-/* eslint-disable import/prefer-default-export */
 import { Component, input, SimpleChanges, output, computed } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BlogPostType } from '../../../types/BlogPostType';

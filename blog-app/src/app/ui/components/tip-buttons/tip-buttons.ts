@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { Component, input, output } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
 import { StatCard } from '../stat-card/stat-card';
 

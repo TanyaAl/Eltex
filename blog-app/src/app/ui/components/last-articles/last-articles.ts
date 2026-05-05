@@ -2,7 +2,8 @@
 import { Component, inject, computed } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LastArticle } from '../last-article/last-article';
-import { PostsStoreService } from '../../../services/posts/posts-store.service';
+import { PostsFacade } from '../../../services/posts/posts-facade';
+
 @Component({
   selector: 'app-last-articles',
   imports: [RouterModule, LastArticle],
@@ -10,8 +11,8 @@ import { PostsStoreService } from '../../../services/posts/posts-store.service';
   styleUrl: './last-articles.scss',
 })
 export class LastArticles {
-  private store = inject(PostsStoreService);
-  blogPosts = this.store.postsList;
+  private facade = inject(PostsFacade);
+  blogPosts = this.facade.postsList;
   lastPosts = computed(() => this.blogPosts().slice(-2));
   ngOnInit() {
     console.log(this.blogPosts());

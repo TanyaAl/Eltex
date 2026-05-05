@@ -1,6 +1,6 @@
 import { Component, inject, output, computed } from '@angular/core';
 import { PaginationBtns } from '../pagination-btns/pagination-btns';
-import { PostsStoreService } from '../../../services/posts/posts-store.service';
+import { PostsFacade } from '../../../services/posts/posts-facade';
 
 @Component({
   selector: 'app-btn-or-link',
@@ -9,10 +9,10 @@ import { PostsStoreService } from '../../../services/posts/posts-store.service';
   styleUrl: './btn-or-link.scss',
 })
 export class BtnOrLink {
-  private store = inject(PostsStoreService);
-  postsCount = computed(() => this.store.postsList().length);
-  currentPage = this.store.currentPage;
-  pageSize = this.store.pageSize;
+  private facade = inject(PostsFacade);
+  postsCount = this.facade.totalCount;
+  currentPage = this.facade.currentPage;
+  pageSize = this.facade.pageSize;
   pageChange = output<number>();
 
   setPage(page: number) {
