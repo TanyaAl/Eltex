@@ -2,10 +2,11 @@
 import { Component, output } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
 import { StatCard } from '../stat-card/stat-card';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-tip-buttons',
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './tip-buttons.html',
   styleUrl: './tip-buttons.scss',
 })

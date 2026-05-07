@@ -21,7 +21,7 @@ export class PostsFacade {
 
   loadPosts(page: number, size: number): void {
     this.service.loadPosts(page, size).subscribe((response) => {
-      console.log('response', response);
+      // console.log('response', response);
       this.store.setPosts(response.items);
       this.store.setTotalCount(response.count);
       this.store.setCurrentPage(page);

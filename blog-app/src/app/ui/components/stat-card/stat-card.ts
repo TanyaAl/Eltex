@@ -2,10 +2,11 @@
 import { Component, inject } from '@angular/core';
 import { DialogRef } from '@angular/cdk/dialog';
 import { PostsFacade } from '../../../services/posts/posts-facade';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-stat-card',
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './stat-card.html',
   styleUrl: './stat-card.scss',
 })

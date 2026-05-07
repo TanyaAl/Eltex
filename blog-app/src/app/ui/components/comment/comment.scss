@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.user-name {
+  display: flex;
+  gap: 12px;
+}
+
+mat-card-actions {
+  justify-content: flex-end;
+}
