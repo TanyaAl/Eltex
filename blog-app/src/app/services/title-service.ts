@@ -10,11 +10,7 @@ export class TitleService {
   }
 
   setFromRoute(route: string) {
-    // console.log('POSTTITLE', postTitle);
-    // if (route.startsWith('/blog/') && postTitle) {
-    //   this.title.setTitle(postTitle);
-    //   return;
-    // }
+
     if (route === '/blog') {
       this.title.setTitle('Blog');
       return;
