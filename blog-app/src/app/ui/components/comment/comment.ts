@@ -2,7 +2,6 @@ import { Component, ChangeDetectionStrategy, inject, output, input } from '@angu
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { FullPostFacade } from '../../../services/fullPost/full-post-facade';
 import { CommentType } from '../../../types/CommentType';
 
 @Component({
@@ -13,8 +12,8 @@ import { CommentType } from '../../../types/CommentType';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Comment {
-  // private facade = inject(FullPostFacade);
   comment = input<CommentType>();
+  index = input<number>();
   ratingChange = output<{ id: string; rating: number }>();
 
   ngOnInit() {

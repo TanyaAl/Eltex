@@ -15,8 +15,8 @@ export class FullPostStore {
     this.comments.set(comments);
   }
 
-  addComment(comments: CommentType[]): void {
-    this.comments.set(comments);
+  addComment(comment: CommentType): void {
+    this.comments.update((prevComments) => [...prevComments, comment]);
   }
 
   updatePostRating(newRating: number): void {

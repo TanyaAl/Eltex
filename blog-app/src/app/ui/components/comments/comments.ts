@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Comment } from '../comment/comment';
 import { FullPostFacade } from '../../../services/fullPost/full-post-facade';
 

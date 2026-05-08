@@ -1,5 +1,9 @@
 <div class="comments-container">
-  @for (comment of comments(); track comment.id) {
-    <app-comment [comment]="comment" (ratingChange)="onCommentRatingChange($event)"></app-comment>
+  @for (comment of comments(); track comment.id; let i = $index) {
+    <app-comment
+      [comment]="comment"
+      [index]="i + 1"
+      (ratingChange)="onCommentRatingChange($event)"
+    ></app-comment>
   }
 </div>

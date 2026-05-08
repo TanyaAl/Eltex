@@ -1,8 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { FullPostStore } from './full-post-store';
 import { FULL_POST_SERVICE } from './full-post-token';
-import { CommentType } from '../../types/CommentType';
-import { FullPostType } from '../../types/FullPostType';
+import { NewCommentType } from '../../types/NewCommentType';
 
 @Injectable()
 export class FullPostFacade {
@@ -14,15 +13,14 @@ export class FullPostFacade {
 
   loadPostWithComments(id: string): void {
     this.service.loadPostWithComments(id).subscribe((response) => {
-      console.log('PAGE', response);
       this.store.setTargetPost(response);
       this.store.setComments(response.comments);
     });
   }
 
-  addComment(postId: string, comment: { author: string; text: string }): void {
-    this.service.addComment(postId, comment).subscribe((updatedComments) => {
-      this.store.addComment(updatedComments);
+  addComment(postId: string, comment: NewCommentType): void {
+    this.service.addComment(postId, comment).subscribe((newComment) => {
+      this.store.addComment(newComment);
     });
   }
 

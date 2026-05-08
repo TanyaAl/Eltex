@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { CommentType } from '../../types/CommentType';
 import { FullPostType } from '../../types/FullPostType';
 import { BlogPostType } from '../../types/BlogPostType';
+import { NewCommentType } from '../../types/NewCommentType';
 
 @Injectable()
 export class FullPostService implements FullPostInterface {
@@ -20,7 +21,7 @@ export class FullPostService implements FullPostInterface {
     return of(response);
   }
 
-  addComment(postId: string, comment: { author: string; text: string }): Observable<CommentType[]> {
+  addComment(postId: string, comment: NewCommentType): Observable<CommentType> {
     const posts: BlogPostType[] = JSON.parse(localStorage.getItem('posts') || '[]');
     const comments: CommentType[] = JSON.parse(localStorage.getItem('comments') || '[]');
     const targetPost = posts.find((item) => item.id === postId);
@@ -45,7 +46,7 @@ export class FullPostService implements FullPostInterface {
     const updatedComments = [...comments, newComment];
     localStorage.setItem('comments', JSON.stringify(updatedComments));
 
-    return of(updatedComments);
+    return of(newComment);
   }
 
   updateCommentRating(commentId: string, rating: number): Observable<CommentType> {

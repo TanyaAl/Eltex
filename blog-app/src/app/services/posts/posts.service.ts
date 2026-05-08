@@ -4,6 +4,7 @@ import { BlogPostType } from '../../types/BlogPostType';
 import { PostsServiceInterface } from './posts-service.interface';
 import { NewPost } from '../../types/NewPost';
 import { PostsResponse } from '../../types/PostsResponse';
+import { CommentType } from '../../types/CommentType';
 
 @Injectable()
 export class PostsService implements PostsServiceInterface {
@@ -63,10 +64,13 @@ export class PostsService implements PostsServiceInterface {
 
   deletePost(id: string): Observable<BlogPostType[]> {
     const current: BlogPostType[] = JSON.parse(localStorage.getItem('posts') || '[]');
+    const postsComments: CommentType[] = JSON.parse(localStorage.getItem('comments') || '[]');
 
     const updated = current.filter((post) => post.id !== id);
+    const updatedPostsComments = postsComments.filter((comment) => comment.postId === id);
 
     localStorage.setItem('posts', JSON.stringify(updated));
+    localStorage.setItem('comments', JSON.stringify(updatedPostsComments));
 
     return of(updated);
   }

@@ -6,7 +6,7 @@ import { NewCommentType } from '../../types/NewCommentType';
 
 export interface FullPostInterface {
   loadPostWithComments(id: string): Observable<FullPostType>;
-  addComment(postId: string, comment: NewCommentType): Observable<CommentType[]>;
+  addComment(postId: string, comment: NewCommentType): Observable<CommentType>;
   updateCommentRating(commentId: string, rating: number): Observable<CommentType>;
   updatePostRating(postId: string, rating: number): Observable<BlogPostType>;
 }
