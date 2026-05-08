@@ -47,5 +47,9 @@ export class App {
       'like',
       this.sanitizer.bypassSecurityTrustResourceUrl('./icons/like.svg'),
     );
+    this.icons.addSvgIcon(
+      'dislike',
+      this.sanitizer.bypassSecurityTrustResourceUrl('./icons/dislike.svg'),
+    );
   }
 }

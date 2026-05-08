@@ -1,7 +1,7 @@
 @use '../../../../variables';
 
-.post-card {
-  max-width: 100%;
+mat-card {
+  width: 100%;
 }
 
 .card-content {
@@ -13,10 +13,6 @@
   img {
     max-width: 400px;
     margin-right: 16px;
-  }
-
-  p {
-    float: left;
   }
 }
 

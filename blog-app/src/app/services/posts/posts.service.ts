@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { BlogPostType } from '../../types/BlogPostType';
 import { PostsServiceInterface } from './posts-service.interface';
@@ -37,6 +37,7 @@ export class PostsService implements PostsServiceInterface {
       title: post.title,
       text: post.text,
       date: todayDate,
+      rating: 0,
     };
 
     const updated = [...current, newPost];

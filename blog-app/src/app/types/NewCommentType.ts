@@ -1,4 +1,4 @@
-export type Comment = {
+export type NewCommentType = {
   author: string;
   text: string;
 };

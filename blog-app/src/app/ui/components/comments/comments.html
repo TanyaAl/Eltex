@@ -1,0 +1,5 @@
+<div class="comments-container">
+  @for (comment of comments(); track comment.id) {
+    <app-comment [comment]="comment" (ratingChange)="onCommentRatingChange($event)"></app-comment>
+  }
+</div>
