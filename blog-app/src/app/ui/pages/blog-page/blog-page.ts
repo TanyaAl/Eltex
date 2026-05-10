@@ -1,13 +1,12 @@
 /* eslint-disable import/prefer-default-export */
-import { Component, signal, computed, inject } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { BlogPageTitle } from '../../components/blog-page-title/blog-page-title';
 import { BtnOrLink } from '../../components/btn-or-link/btn-or-link';
 import { BlogPostsContainer } from '../../components/blog-posts-container/blog-posts-container';
 import { TipButtons } from '../../components/tip-buttons/tip-buttons';
 import { FormForAddBlogPost } from '../../components/form-for-add-blog-post/form-for-add-blog-post';
-import { BlogPostType } from '../../../types/BlogPostType';
-import { PostsStoreService } from '../../../services/posts/posts-store.service';
-import { POSTS_SERVICE } from '../../../services/posts/posts-service.token';
+import { NewPost } from '../../../types/NewPost';
+import { PostsFacade } from '../../../services/posts/posts-facade';
 
 @Component({
   selector: 'app-blog-page',
@@ -18,25 +17,20 @@ import { POSTS_SERVICE } from '../../../services/posts/posts-service.token';
 export class BlogPage {
   isFormOpen = signal(false);
 
-  editingPost = signal<BlogPostType | null>(null);
+  private facade = inject(PostsFacade);
 
-  paginatedPosts = signal<BlogPostType[]>([]);
+  paginatedPosts = this.facade.postsList;
+  pageSize = this.facade.pageSize;
+  currentPage = this.facade.currentPage;
 
-  private postsService = inject(POSTS_SERVICE);
-  private store = inject(PostsStoreService);
-
-  blogPosts = this.store.postsList;
-  postsCount = computed(() => this.store.postsList().length);
-  pageSize = this.store.pageSize;
+  editingPost = this.facade.editingPost;
 
   private loadPage() {
-    const posts = this.postsService.getPostsByPage(this.store.currentPage(), this.pageSize());
-    // .subscribe((posts) =>
-    this.paginatedPosts.set(posts);
+    this.facade.loadPosts(this.currentPage(), this.pageSize());
   }
 
   protected setPage(page: number) {
-    this.store.setCurrentPage(page);
+    this.facade.setCurrentPage(page);
     this.loadPage();
   }
 
@@ -44,14 +38,14 @@ export class BlogPage {
     this.loadPage();
   }
 
-  protected onSave(value: { category: string; title: string; text: string }) {
+  protected onSave(value: NewPost) {
     const editPost = this.editingPost();
     if (editPost) {
-      this.postsService.updatePost({ ...editPost, ...value }).subscribe(() => this.loadPage());
+      this.facade.updatePost({ ...editPost, ...value });
     } else {
-      this.postsService.addPost(value).subscribe(() => this.loadPage());
+      this.facade.addPost(value);
     }
-    this.editingPost.set(null);
+    this.facade.clearEditingPost();
   }
 
   protected onOpenform() {
@@ -59,9 +53,8 @@ export class BlogPage {
   }
 
   protected onEdit(id: string) {
-    const postToEdit = this.postsService.getPostById(id);
-    if (!postToEdit) return;
-    this.editingPost.set(postToEdit);
+    this.facade.getPostById(id);
+
     this.onOpenform();
     setTimeout(() => {
       document.querySelector('.add-article')?.scrollIntoView({ behavior: 'smooth' });
@@ -70,11 +63,11 @@ export class BlogPage {
 
   protected onDelete(id: string) {
     if (this.editingPost()?.id === id) return;
-    this.postsService.deletePost(id).subscribe(() => this.loadPage());
+    this.facade.deletePost(id);
   }
 
   protected onCloseForm() {
     this.isFormOpen.set(false);
-    this.editingPost.set(null);
+    this.facade.clearEditingPost();
   }
 }

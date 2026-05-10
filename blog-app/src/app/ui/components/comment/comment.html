@@ -1,0 +1,18 @@
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header class="header">
+    <mat-card-title>#{{ index() }} {{ comment()?.author }}</mat-card-title>
+    <span class="post-time">
+      <time>{{ comment()?.date }}</time>
+    </span>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ comment()?.text }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="increase()" mat-icon-button><mat-icon svgIcon="like"></mat-icon></button>
+    <p>{{ comment()?.rating }}</p>
+    <button (click)="decrease()" mat-icon-button>
+      <mat-icon svgIcon="dislike"></mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

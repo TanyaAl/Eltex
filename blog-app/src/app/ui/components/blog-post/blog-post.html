@@ -1,4 +1,4 @@
-<article class="card" data-id="">
+<article class="card" data-id="" [routerLink]="['/blog', blogPost().id]">
   <div class="article-photo"><img src="./template.webp" alt="article-img" /></div>
   <div class="card-text">
     <p class="p16 category">{{ blogPost().category }}</p>
@@ -9,9 +9,11 @@
     </p>
   </div>
   <div class="post-btn-container">
-    <div (click)="onEdit()" class="post-btn cursor">
-      <img src="./edit.svg" alt="edit-icon" />
+    <div (click)="onEdit($event)" class="post-btn cursor">
+      <mat-icon svgIcon="edit"></mat-icon>
     </div>
-    <div (click)="onDelete()" class="post-btn"><img src="./delete.svg" alt="delete-icon" /></div>
+    <div (click)="onDelete($event)" class="post-btn">
+      <mat-icon svgIcon="delete"></mat-icon>
+    </div>
   </div>
 </article>

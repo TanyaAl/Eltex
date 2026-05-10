@@ -1,0 +1,54 @@
+@use '../../../../variables';
+
+mat-card {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 32px;
+  margin-top: 20px;
+  justify-content: space-between;
+  overflow-wrap: anywhere;
+
+  img {
+    max-width: 400px;
+    margin-right: 16px;
+  }
+}
+
+.card-footer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+}
+
+mat-card-actions {
+  justify-content: flex-end;
+
+  .comment {
+    margin-left: 16px;
+    color: var(--green);
+  }
+}
+
+mat-card-title {
+  font-size: 32px;
+  font-weight: 400;
+  margin-top: 16px;
+  overflow-wrap: anywhere;
+}
+
+@media (width <= 480px) {
+  .card-content {
+    flex-direction: column;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}

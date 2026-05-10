@@ -1,0 +1,14 @@
+<div id="form-for-comment" class="form-comment-container" [formGroup]="formForComment">
+  <mat-form-field>
+    <mat-label>Ваше имя</mat-label>
+    <input matInput formControlName="author" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Комментарий</mat-label>
+    <textarea formControlName="text" matInput></textarea>
+  </mat-form-field>
+  <div class="form-comment-btns">
+    <button (click)="onSubmit()" matFab extended class="btn-send-comment">Отправить</button>
+    <button (click)="onCancel()" matFab extended class="btn-cancel-comment">Отменить</button>
+  </div>
+</div>

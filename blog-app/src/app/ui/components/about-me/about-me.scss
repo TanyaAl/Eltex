@@ -29,19 +29,19 @@
     a {
       display: inline-flex;
       align-items: center;
+      gap: 8px;
       color: var(--green);
       font-size: 15px;
+    }
+  }
 
-      img {
-        height: 1em;
-        width: auto;
-        transition: transform 0.3s ease;
-        padding-left: 14px;
+  mat-icon {
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+    padding-left: 14px;
 
-        &:hover {
-          transform: translateX(14px);
-        }
-      }
+    &:hover {
+      transform: translateX(14px);
     }
   }
 

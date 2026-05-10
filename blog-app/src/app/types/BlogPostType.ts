@@ -4,4 +4,5 @@ export interface BlogPostType {
   title: string;
   text: string;
   date: string;
+  rating: number;
 }
