@@ -5,6 +5,7 @@ import { CommentType } from '../../types/CommentType';
 import { FullPostType } from '../../types/FullPostType';
 import { BlogPostType } from '../../types/BlogPostType';
 import { NewCommentType } from '../../types/NewCommentType';
+import { UpdatingRating } from '../../types/UpdatingRating';
 
 @Injectable()
 export class FullPostService implements FullPostInterface {
@@ -49,31 +50,31 @@ export class FullPostService implements FullPostInterface {
     return of(newComment);
   }
 
-  updateCommentRating(commentId: string, rating: number): Observable<CommentType> {
+  updateCommentRating(data: UpdatingRating): Observable<CommentType> {
     const comments: CommentType[] = JSON.parse(localStorage.getItem('comments') || '[]');
-    const targetComment = comments.find((item) => item.id === commentId);
+    const targetComment = comments.find((item) => item.id === data.id);
     if (!targetComment) {
       throw new Error('Comment not found');
     }
-    const updatedComment: CommentType = { ...targetComment, rating: rating };
+    const updatedComment: CommentType = { ...targetComment, rating: data.rating };
 
     const updatedComments = comments.map((comment) =>
-      comment.id === commentId ? updatedComment : comment,
+      comment.id === data.id ? updatedComment : comment,
     );
     localStorage.setItem('comments', JSON.stringify(updatedComments));
 
     return of(updatedComment);
   }
 
-  updatePostRating(postId: string, rating: number): Observable<BlogPostType> {
+  updatePostRating(data: UpdatingRating): Observable<BlogPostType> {
     const posts: BlogPostType[] = JSON.parse(localStorage.getItem('posts') || '[]');
-    const targetPost = posts.find((item) => item.id === postId);
+    const targetPost = posts.find((item) => item.id === data.id);
     if (!targetPost) {
       throw new Error('Post not found');
     }
-    const updatedPost: BlogPostType = { ...targetPost, rating: rating };
+    const updatedPost: BlogPostType = { ...targetPost, rating: data.rating };
 
-    const updatedPosts = posts.map((post) => (post.id === postId ? updatedPost : post));
+    const updatedPosts = posts.map((post) => (post.id === data.id ? updatedPost : post));
     localStorage.setItem('posts', JSON.stringify(updatedPosts));
 
     return of(updatedPost);

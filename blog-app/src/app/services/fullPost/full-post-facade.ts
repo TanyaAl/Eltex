@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { FullPostStore } from './full-post-store';
 import { FULL_POST_SERVICE } from './full-post-token';
 import { NewCommentType } from '../../types/NewCommentType';
+import { UpdatingRating } from '../../types/UpdatingRating';
 
 @Injectable()
 export class FullPostFacade {
@@ -24,14 +25,14 @@ export class FullPostFacade {
     });
   }
 
-  updateCommentRating(commentId: string, rating: number): void {
-    this.service.updateCommentRating(commentId, rating).subscribe((updatedComment) => {
+  updateCommentRating(data: UpdatingRating): void {
+    this.service.updateCommentRating(data).subscribe((updatedComment) => {
       this.store.updateCommentRating(updatedComment.id, updatedComment.rating);
     });
   }
 
-  updatePostRating(postId: string, rating: number): void {
-    this.service.updatePostRating(postId, rating).subscribe((updatedPost) => {
+  updatePostRating(data: UpdatingRating): void {
+    this.service.updatePostRating(data).subscribe((updatedPost) => {
       this.store.updatePostRating(updatedPost.rating);
     });
   }
