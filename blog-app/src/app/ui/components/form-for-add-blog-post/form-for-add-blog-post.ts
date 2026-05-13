@@ -1,7 +1,8 @@
-import { Component, input, SimpleChanges, output, computed } from '@angular/core';
+import { Component, input, SimpleChanges, output, computed, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BlogPostType } from '../../../types/BlogPostType';
-
+import { Categories } from '../../../services/categories';
+import { toSignal } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-form-for-add-blog-post',
   imports: [ReactiveFormsModule],
@@ -16,6 +17,8 @@ export class FormForAddBlogPost {
   close = output<void>();
 
   save = output<{ category: string; title: string; text: string }>();
+
+  private categoriesService = inject(Categories);
 
   categories = ['Дизайн', 'Разработка'];
 

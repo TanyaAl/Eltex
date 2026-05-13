@@ -16,7 +16,7 @@ export class PostsService implements PostsServiceInterface {
     const paginated = all.slice(start, end);
     const response: PostsResponse = {
       items: paginated,
-      count: all.length,
+      total: all.length,
     };
     return of(response);
   }

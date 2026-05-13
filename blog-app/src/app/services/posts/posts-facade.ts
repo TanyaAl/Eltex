@@ -23,7 +23,7 @@ export class PostsFacade {
     this.service.loadPosts(page, size).subscribe((response) => {
       console.log('response', response);
       this.store.setPosts(response.items);
-      this.store.setTotalCount(response.count);
+      this.store.setTotalCount(response.total);
       this.store.setCurrentPage(page);
     });
   }
