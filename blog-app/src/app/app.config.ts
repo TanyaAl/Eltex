@@ -9,6 +9,9 @@ import { PostsApiService } from './services/posts/posts-api-service';
 import { environment } from '../environments/environment';
 
 import { routes } from './app.routes';
+import { CategoriesLocalService } from './services/categories/categories-local-service';
+import { CATEGORIES_SERVICE } from './services/categories/categories-token';
+import { CategoriesApiService } from './services/categories/categoriesApiService';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,9 +25,14 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     PostsFacade,
     PostsStoreService,
+    CategoriesLocalService,
     {
       provide: POSTS_SERVICE,
-      useClass: environment.production ? PostsService : PostsApiService,
+      useClass: environment.useLocalStorage ? PostsService : PostsApiService,
+    },
+    {
+      provide: CATEGORIES_SERVICE,
+      useClass: environment.useLocalStorage ? CategoriesLocalService : CategoriesApiService,
     },
   ],
 };

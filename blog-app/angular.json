@@ -60,21 +60,35 @@
               "extractLicenses": false,
               "sourceMap": true,
               "fileReplacements": []
+            },
+
+            "local": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular/build:dev-server",
-          "options": {
-            "proxyConfig": "proxy.conf.json"
-          },
+          "options": {},
           "configurations": {
             "production": {
               "buildTarget": "blog-app:build:production"
             },
             "development": {
-              "buildTarget": "blog-app:build:development"
+              "buildTarget": "blog-app:build:development",
+              "proxyConfig": "proxy.conf.json"
+            },
+            "local": {
+              "buildTarget": "blog-app:build:local"
             }
           },
           "defaultConfiguration": "development"

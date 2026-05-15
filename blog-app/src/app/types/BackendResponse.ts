@@ -1,5 +1,7 @@
+import { ArticleEntity } from './ArticleEntity';
+
 export interface BackendResponse {
-  items: [];
+  items: ArticleEntity[];
   total: number;
   page: number;
   limit: number;

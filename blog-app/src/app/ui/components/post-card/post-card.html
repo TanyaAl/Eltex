@@ -5,7 +5,7 @@
       <mat-card-title>{{ post()?.title }}</mat-card-title>
     </mat-card-header>
     <div class="card-content">
-      <img src="./template.webp" alt="Photo for article" />
+      <img [src]="post()?.image || './template.webp'" alt="Photo for article" />
       <mat-card-content>
         <p>
           {{ post()?.text }}

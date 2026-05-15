@@ -1,11 +1,26 @@
 import { Component, input, SimpleChanges, output, computed, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BlogPostType } from '../../../types/BlogPostType';
-import { Categories } from '../../../services/categories';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { CATEGORIES_SERVICE } from '../../../services/categories/categories-token';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { CategoryEntity } from '../../../types/CategoryEntity';
+import { CategoryDto } from '../../../types/CategoryDto';
+import { startWith, map, switchMap, Observable, every } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+import { NewPost } from '../../../types/NewPost';
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-form-for-add-blog-post',
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    AsyncPipe,
+  ],
   templateUrl: './form-for-add-blog-post.html',
   styleUrl: './form-for-add-blog-post.scss',
 })
@@ -16,11 +31,43 @@ export class FormForAddBlogPost {
 
   close = output<void>();
 
-  save = output<{ category: string; title: string; text: string }>();
+  save = output<NewPost>();
+  private categoriesService = inject(CATEGORIES_SERVICE);
+  categories: CategoryEntity[] = [];
 
-  private categoriesService = inject(Categories);
+  filteredCategories$!: Observable<CategoryEntity[]>;
 
-  categories = ['Дизайн', 'Разработка'];
+  readonly isBackendMode = !environment.useLocalStorage;
+  selectedFile: File | null = null;
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  ngOnInit() {
+    this.filteredCategories$ = this.blogPostForm.get('category')!.valueChanges.pipe(
+      startWith(this.blogPostForm.get('category')?.value || ''),
+
+      switchMap((inputValue) => {
+        const searchName = typeof inputValue === 'string' ? inputValue : inputValue?.name || '';
+
+        return this.categoriesService
+          .getCategories()
+          .pipe(
+            map((allCategories) =>
+              allCategories.filter((cat) =>
+                cat.name.toLowerCase().includes(searchName.toLowerCase()),
+              ),
+            ),
+          );
+      }),
+    );
+  }
+
+  displayFn(cat: CategoryEntity | string): string {
+    if (!cat) return '';
+    return typeof cat === 'string' ? cat : cat.name;
+  }
 
   protected formTitle = computed(() =>
     this.editingPost() ? 'Изменить статью' : 'Добавить статью',
@@ -62,7 +109,10 @@ export class FormForAddBlogPost {
   }
 
   protected blogPostForm = new FormGroup({
-    category: new FormControl('Разработка', { nonNullable: true, validators: Validators.required }),
+    category: new FormControl<CategoryDto | string>('', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
     title: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(25)],
@@ -84,8 +134,17 @@ export class FormForAddBlogPost {
 
   protected onSubmit() {
     if (this.blogPostForm.invalid) return;
-    this.save.emit(this.blogPostForm.getRawValue());
+
+    const raw = this.blogPostForm.getRawValue();
+    const categoryName = typeof raw.category === 'string' ? raw.category : raw.category?.name;
+
+    this.save.emit({
+      ...raw,
+      category: categoryName as string,
+      image: this.selectedFile,
+    });
     this.blogPostForm.reset();
+    this.selectedFile = null;
   }
 
   protected onCancel() {

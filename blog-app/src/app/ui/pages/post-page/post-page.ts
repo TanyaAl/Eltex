@@ -9,6 +9,8 @@ import { FullPostStore } from '../../../services/fullPost/full-post-store';
 import { FULL_POST_SERVICE } from '../../../services/fullPost/full-post-token';
 import { Title } from '@angular/platform-browser';
 import { NewCommentType } from '../../../types/NewCommentType';
+import { FullPostApiService } from '../../../services/fullPost/full-post-api-service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-post-page',
@@ -20,7 +22,7 @@ import { NewCommentType } from '../../../types/NewCommentType';
     FullPostStore,
     {
       provide: FULL_POST_SERVICE,
-      useClass: FullPostService,
+      useClass: environment.production ? FullPostService : FullPostApiService,
     },
   ],
 })
@@ -54,7 +56,11 @@ export class PostPage {
     console.log('RATING', rating);
     const post = this.targetPost();
     if (!post) return;
-    this.facade.updatePostRating({ id: post.id, rating });
+    if (rating > post.rating) {
+      this.facade.upPostRating({ id: post.id, rating: rating });
+    } else {
+      this.facade.downPostRating({ id: post.id, rating: rating });
+    }
   }
 
   protected onAddComment(comment: NewCommentType): void {

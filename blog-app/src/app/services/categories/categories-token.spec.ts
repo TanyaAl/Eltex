@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Categories } from './categories';
+import { CategoriesToken } from './categories-token';
 
-describe('Categories', () => {
-  let service: Categories;
+describe('CategoriesToken', () => {
+  let service: CategoriesToken;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(Categories);
+    service = TestBed.inject(CategoriesToken);
   });
 
   it('should be created', () => {

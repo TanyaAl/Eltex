@@ -5,8 +5,8 @@ import { PostsResponse } from '../../types/PostsResponse';
 
 export interface PostsServiceInterface {
   loadPosts(page: number, pageSize: number): Observable<PostsResponse>;
-  addPost(data: NewPost): Observable<BlogPostType[]>;
+  addPost(data: NewPost, img?: File | null): Observable<BlogPostType[]>;
   deletePost(id: string): Observable<BlogPostType[]>;
   getPostById(id: string): Observable<BlogPostType | undefined>;
-  updatePost(post: BlogPostType): Observable<BlogPostType[]>;
+  updatePost(post: BlogPostType, img?: File | null): Observable<BlogPostType[]>;
 }

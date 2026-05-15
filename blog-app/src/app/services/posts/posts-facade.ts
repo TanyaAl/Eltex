@@ -28,13 +28,14 @@ export class PostsFacade {
     });
   }
 
-  addPost(post: NewPost): void {
-    this.service.addPost(post).subscribe(() => {
+  addPost(post: NewPost, img: File | null): void {
+    console.log('POST', post);
+    this.service.addPost(post, img).subscribe(() => {
       this.loadPosts(this.currentPage(), this.pageSize());
     });
   }
 
-  updatePost(post: BlogPostType): void {
+  updatePost(post: BlogPostType, img: File | null): void {
     this.service.updatePost(post).subscribe(() => {
       this.loadPosts(this.currentPage(), this.pageSize());
     });

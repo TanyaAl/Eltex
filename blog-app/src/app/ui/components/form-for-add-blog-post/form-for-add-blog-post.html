@@ -11,12 +11,17 @@
       @let isTitleStrInvalid = hasError('title');
       @let isCategoryInvalid = hasError('category');
       <label for="category">Выберите рубрику: </label>
-      <select id="category" formControlName="category" class="select">
-        <option value="" disabled></option>
-        @for (cat of categories; track cat) {
-          <option [value]="cat">{{ cat }}</option>
-        }
-      </select>
+      <mat-form-field class="full-width">
+        <mat-label class="invisible">Категория</mat-label>
+        <input type="text" matInput formControlName="category" [matAutocomplete]="auto" />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          @for (cat of filteredCategories$ | async; track cat.id) {
+            <mat-option [value]="cat">
+              {{ cat.name }}
+            </mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
       @if (isCategoryInvalid) {
         @for (errorMsg of getControlErrors('title'); track $index) {
           <div class="error">{{ errorMsg }}</div>
@@ -48,6 +53,12 @@
           placeholder="Текст статьи"
           [class.error-border]="isTextStrInvalid"
         ></textarea>
+        @if (isBackendMode) {
+          <div class="file-upload-section">
+            <label>Изображение статьи</label>
+            <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+          </div>
+        }
         @if (isTextStrInvalid) {
           @for (errorMsg of getControlErrors('text'); track $index) {
             <div class="error text-error">{{ errorMsg }}</div>

@@ -66,7 +66,21 @@ export class FullPostService implements FullPostInterface {
     return of(updatedComment);
   }
 
-  updatePostRating(data: UpdatingRating): Observable<BlogPostType> {
+  upPostRating(data: UpdatingRating): Observable<BlogPostType> {
+    const posts: BlogPostType[] = JSON.parse(localStorage.getItem('posts') || '[]');
+    const targetPost = posts.find((item) => item.id === data.id);
+    if (!targetPost) {
+      throw new Error('Post not found');
+    }
+    const updatedPost: BlogPostType = { ...targetPost, rating: data.rating };
+
+    const updatedPosts = posts.map((post) => (post.id === data.id ? updatedPost : post));
+    localStorage.setItem('posts', JSON.stringify(updatedPosts));
+
+    return of(updatedPost);
+  }
+
+  downPostRating(data: UpdatingRating): Observable<BlogPostType> {
     const posts: BlogPostType[] = JSON.parse(localStorage.getItem('posts') || '[]');
     const targetPost = posts.find((item) => item.id === data.id);
     if (!targetPost) {
