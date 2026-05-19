@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { BlogPostType } from '../../types/BlogPostType';
 import { PostsServiceInterface } from './posts-service.interface';
@@ -6,9 +6,11 @@ import { NewPost } from '../../types/NewPost';
 import { PostsResponse } from '../../types/PostsResponse';
 import { CommentType } from '../../types/CommentType';
 import { CategoryEntity } from '../../types/CategoryEntity';
+import { CATEGORIES_SERVICE } from '../categories/categories-token';
 
 @Injectable()
 export class PostsService implements PostsServiceInterface {
+  private categoriesService = inject(CATEGORIES_SERVICE);
   loadPosts(page: number, pageSize: number): Observable<PostsResponse> {
     const all: BlogPostType[] = JSON.parse(localStorage.getItem('posts') || '[]');
     console.log('all', all);
@@ -23,17 +25,10 @@ export class PostsService implements PostsServiceInterface {
   }
 
   private ensureCategoryExists(categoryName: string): void {
-    const categories: CategoryEntity[] = JSON.parse(localStorage.getItem('categories') || '[]');
+    console.log('ensureCategoryExists called', categoryName);
 
-    const exists = categories.find((c) => c.name.toLowerCase() === categoryName.toLowerCase());
-
-    if (!exists && categoryName.trim() !== '') {
-      const newCategory: CategoryEntity = {
-        id: crypto.randomUUID(),
-        name: categoryName,
-      };
-      categories.push(newCategory);
-      localStorage.setItem('categories', JSON.stringify(categories));
+    if (categoryName.trim() !== '') {
+      this.categoriesService.createCategory(categoryName).subscribe();
     }
   }
 

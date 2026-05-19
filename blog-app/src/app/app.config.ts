@@ -25,7 +25,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     PostsFacade,
     PostsStoreService,
-    CategoriesLocalService,
     {
       provide: POSTS_SERVICE,
       useClass: environment.useLocalStorage ? PostsService : PostsApiService,

@@ -28,7 +28,7 @@ export class PostsApiService implements PostsServiceInterface {
   loadPosts(page: number, pageSize: number): Observable<PostsResponse> {
     console.log('BACKEND');
     return combineLatest([
-      this.http.get<BackendResponse>(`/api/articles?page=${page}&limit=${pageSize}`),
+      this.http.get<BackendResponse>(`/api/articles`, { params: { page, limit: pageSize } }),
       this.categoriesService.getCategories(),
     ]).pipe(
       map(([response, categories]) => ({

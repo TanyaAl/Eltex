@@ -11,6 +11,7 @@ import { Title } from '@angular/platform-browser';
 import { NewCommentType } from '../../../types/NewCommentType';
 import { FullPostApiService } from '../../../services/fullPost/full-post-api-service';
 import { environment } from '../../../../environments/environment';
+import { ConnectableObservable } from 'rxjs';
 
 @Component({
   selector: 'app-post-page',
@@ -48,7 +49,7 @@ export class PostPage {
     const id = this.route.snapshot.paramMap.get('id');
 
     if (!id) return;
-
+    console.log('POSTPAGEID', id);
     this.facade.loadPostWithComments(id);
   }
 

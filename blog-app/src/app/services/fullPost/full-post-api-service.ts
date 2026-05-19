@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 import { CATEGORIES_SERVICE } from '../categories/categories-token';
 import { ArticleEntity } from '../../types/ArticleEntity';
 import { mapCommentsFromBackend, mapCommentFromBackend, mapFromBackend } from '../../utils/mappers';
-import { map, switchMap } from 'rxjs';
+import { map, take, switchMap } from 'rxjs';
 import { CommentEntity } from '../../types/CommentEntity';
 
 @Injectable()
@@ -22,7 +22,7 @@ export class FullPostApiService implements FullPostInterface {
     return forkJoin({
       article: this.http.get<ArticleEntity>(`/api/articles/${id}`),
       comments: this.http.get<CommentEntity[]>(`/api/comments/article/${id}`),
-      categories: this.categoriesService.getCategories(),
+      categories: this.categoriesService.getCategories().pipe(take(1)),
     }).pipe(
       map(({ article, comments, categories }) => {
         const category = categories.find((cat) => cat.id === article.categoryId);

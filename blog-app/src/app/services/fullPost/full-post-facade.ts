@@ -14,6 +14,7 @@ export class FullPostFacade {
 
   loadPostWithComments(id: string): void {
     this.service.loadPostWithComments(id).subscribe((response) => {
+      console.log('ДАННЫЕ С БЭКЕНДА В ФАСАДЕ:', response);
       this.store.setTargetPost(response);
       this.store.setComments(response.comments);
     });
