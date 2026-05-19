@@ -31,8 +31,14 @@ export class FullPostFacade {
     });
   }
 
-  updatePostRating(data: UpdatingRating): void {
-    this.service.updatePostRating(data).subscribe((updatedPost) => {
+  upPostRating(data: UpdatingRating): void {
+    this.service.upPostRating(data).subscribe((updatedPost) => {
+      this.store.updatePostRating(updatedPost.rating);
+    });
+  }
+
+  downPostRating(data: UpdatingRating): void {
+    this.service.upPostRating(data).subscribe((updatedPost) => {
       this.store.updatePostRating(updatedPost.rating);
     });
   }

@@ -40,10 +40,12 @@ export class BlogPage {
 
   protected onSave(value: NewPost) {
     const editPost = this.editingPost();
+    const fileToUpload = value.image || null;
     if (editPost) {
-      this.facade.updatePost({ ...editPost, ...value });
+      const { image, ...textData } = value;
+      this.facade.updatePost({ ...editPost, ...textData }, fileToUpload);
     } else {
-      this.facade.addPost(value);
+      this.facade.addPost(value, value.image || null);
     }
     this.facade.clearEditingPost();
   }

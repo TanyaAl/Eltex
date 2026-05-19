@@ -9,5 +9,6 @@ export interface FullPostInterface {
   loadPostWithComments(id: string): Observable<FullPostType>;
   addComment(postId: string, comment: NewCommentType): Observable<CommentType>;
   updateCommentRating(data: UpdatingRating): Observable<CommentType>;
-  updatePostRating(data: UpdatingRating): Observable<BlogPostType>;
+  upPostRating(data: UpdatingRating): Observable<BlogPostType>;
+  downPostRating(data: UpdatingRating): Observable<BlogPostType>;
 }

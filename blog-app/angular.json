@@ -21,7 +21,7 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
-            "baseHref": "/Eltex/",
+            "baseHref": "/",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -34,6 +34,13 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/Eltex/",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -51,19 +58,37 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": []
+            },
+
+            "local": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {},
           "configurations": {
             "production": {
               "buildTarget": "blog-app:build:production"
             },
             "development": {
-              "buildTarget": "blog-app:build:development"
+              "buildTarget": "blog-app:build:development",
+              "proxyConfig": "proxy.conf.json"
+            },
+            "local": {
+              "buildTarget": "blog-app:build:local"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +98,9 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+          "options": {
+            "baseHref": "/Eltex/"
+          }
         }
       }
     }

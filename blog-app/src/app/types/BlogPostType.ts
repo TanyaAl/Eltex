@@ -5,4 +5,5 @@ export interface BlogPostType {
   text: string;
   date: string;
   rating: number;
+  image?: string;
 }

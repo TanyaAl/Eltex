@@ -5,6 +5,7 @@ import { PostsServiceInterface } from './posts-service.interface';
 import { NewPost } from '../../types/NewPost';
 import { PostsResponse } from '../../types/PostsResponse';
 import { CommentType } from '../../types/CommentType';
+import { CategoryEntity } from '../../types/CategoryEntity';
 
 @Injectable()
 export class PostsService implements PostsServiceInterface {
@@ -16,12 +17,29 @@ export class PostsService implements PostsServiceInterface {
     const paginated = all.slice(start, end);
     const response: PostsResponse = {
       items: paginated,
-      count: all.length,
+      total: all.length,
     };
     return of(response);
   }
 
+  private ensureCategoryExists(categoryName: string): void {
+    const categories: CategoryEntity[] = JSON.parse(localStorage.getItem('categories') || '[]');
+
+    const exists = categories.find((c) => c.name.toLowerCase() === categoryName.toLowerCase());
+
+    if (!exists && categoryName.trim() !== '') {
+      const newCategory: CategoryEntity = {
+        id: crypto.randomUUID(),
+        name: categoryName,
+      };
+      categories.push(newCategory);
+      localStorage.setItem('categories', JSON.stringify(categories));
+    }
+  }
+
   addPost(post: NewPost): Observable<BlogPostType[]> {
+    this.ensureCategoryExists(post.category);
+
     const current: BlogPostType[] = JSON.parse(localStorage.getItem('posts') || '[]');
     const todayDate = new Date()
       .toLocaleDateString('ru-RU', {
@@ -48,6 +66,7 @@ export class PostsService implements PostsServiceInterface {
   }
 
   updatePost(post: BlogPostType): Observable<BlogPostType[]> {
+    this.ensureCategoryExists(post.category);
     const current: BlogPostType[] = JSON.parse(localStorage.getItem('posts') || '[]');
 
     const updated = current.map((p: BlogPostType) => (p.id === post.id ? post : p));
